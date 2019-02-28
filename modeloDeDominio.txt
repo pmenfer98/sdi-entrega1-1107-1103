@@ -1,0 +1,56 @@
+USER
+____
+
+id: Long
+name: String
+surname: String
+email: String
+password: String
+confirmPassword: String
+money: double
+rol: Rol
+valid: boolean
+publishedSales: Set<Sale>
+boughtSales: Set<Sale>
+sentMesages: Set<Sale>
+receivedMessage: Set<Sale>
+
+
+SALE
+____
+
+id: Long
+title: String
+details: String
+creationDate: LocalDateTime  <-- joda-time
+price: double
+owner: User
+active: SaleStatus
+buyer: User
+
+MESSAGE
+_______
+
+id: Long
+sender: User
+receiver: User
+body: String
+date: LocalDateTime
+valid: boolean
+
+
+ROL <Enum>
+__________
+
+ADMIN
+STAND
+
+SALESTATUS<Enum>
+________________
+
+ON SALE
+SOLD
+OUT
+
+
+
