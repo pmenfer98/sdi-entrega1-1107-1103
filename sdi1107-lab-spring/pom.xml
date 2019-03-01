@@ -72,6 +72,11 @@
 			<version>3.0.4.RELEASE</version>
 
 		</dependency>
+		
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+		</dependency>
 
 	</dependencies>
 
