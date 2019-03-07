@@ -10,7 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.uniovi</groupId>
-	<artifactId>sdi1107-lab-spring</artifactId>
+	<artifactId>sdi1103-1107-lab-spring</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>sdi1107-lab-spring</name>
 	<description>Aplicacion para gestion de notas</description>
@@ -55,24 +55,17 @@
 		<dependency>
 			<groupId>net.sourceforge.nekohtml</groupId>
 			<artifactId>nekohtml</artifactId>
-			<version>1.9.21</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
-
 		<dependency>
-
 			<groupId>org.thymeleaf.extras</groupId>
-
 			<artifactId>thymeleaf-extras-springsecurity4</artifactId>
-
 			<version>3.0.4.RELEASE</version>
-
 		</dependency>
-		
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
