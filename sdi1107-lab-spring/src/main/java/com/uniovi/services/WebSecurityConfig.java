@@ -19,52 +19,54 @@ import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Autowired
-	private UserDetailsService userDetailsService;
+    @Autowired
+    private UserDetailsService userDetailsService;
 
-	@Override
-	@Bean
-	public AuthenticationManager authenticationManagerBean() throws Exception {
-		return super.authenticationManagerBean();
-	}
+    @Override
+    @Bean
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+	return super.authenticationManagerBean();
+    }
 
-	@Bean
-	public SpringSecurityDialect securityDialect() {
-		return new SpringSecurityDialect();
-	}
+    @Bean
+    public SpringSecurityDialect securityDialect() {
+	return new SpringSecurityDialect();
+    }
 
-	@Bean
-	public BCryptPasswordEncoder bCryptPasswordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+	return new BCryptPasswordEncoder();
+    }
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeRequests() // peticiones autorizadas
-				.antMatchers(getPublicUrls()).permitAll()
-				// Permite a todos los usuarios
-				.anyRequest().authenticated()
-				// pagina de autentificacion por defecto
-				.and().formLogin().loginPage("/login").permitAll()
-				// Si se loguea bien
-				.defaultSuccessUrl("/home")
-				// desconectarse
-				.and().logout().permitAll();
-	}
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+	http.csrf().disable().authorizeRequests() // peticiones autorizadas
+		.antMatchers(getPublicUrls()).permitAll()
+		// Permite a todos los usuarios
+		.anyRequest().authenticated()
+		// pagina de autentificacion por defecto
+		.and().formLogin().loginPage("/login").permitAll()
+		// Si se loguea bien
+		.defaultSuccessUrl("/home")
+		// desconectarse
+		.and().logout().permitAll();
+    }
 
-	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
-	}
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth)
+	    throws Exception {
+	auth.userDetailsService(userDetailsService)
+		.passwordEncoder(bCryptPasswordEncoder());
+    }
 
-	private String[] getPublicUrls() {
-		List<String> publicUrls = new ArrayList<>();
-		publicUrls.add("/css/**");
-		publicUrls.add("/img/**");
-		publicUrls.add("/js/**");
-		publicUrls.add("/");
-		publicUrls.add("/signup");
-		publicUrls.add("/login");
-		return (String[]) publicUrls.toArray(new String[publicUrls.size()]);
-	}
+    private String[] getPublicUrls() {
+	List<String> publicUrls = new ArrayList<>();
+	publicUrls.add("/css/**");
+	publicUrls.add("/img/**");
+	publicUrls.add("/script/**");
+	publicUrls.add("/");
+	publicUrls.add("/signup");
+	publicUrls.add("/login");
+	return (String[]) publicUrls.toArray(new String[publicUrls.size()]);
+    }
 }

@@ -20,43 +20,45 @@ import com.uniovi.validators.SignUpFormValidator;
 @Controller
 public class UserController {
 
-	@Autowired
-	private UsersService usersService;
+    @Autowired
+    private UsersService usersService;
 
-	@Autowired
-	private SignUpFormValidator signUpFormValidator;
-	
-	@Autowired
-	private SecurityService securityService;
+    @Autowired
+    private SignUpFormValidator signUpFormValidator;
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(Model model) {
-		return "login";
+    @Autowired
+    private SecurityService securityService;
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login(Model model) {
+	return "login";
+    }
+
+    @GetMapping("/home")
+    public String home(Model model) {
+	Authentication auth = SecurityContextHolder.getContext()
+		.getAuthentication();
+	String email = auth.getName();
+	User activeUser = usersService.getUserByEmail(email);
+	model.addAttribute("markList", activeUser);
+	return "home";
+    }
+
+    @GetMapping("/signup")
+    public String register(Model model) {
+	model.addAttribute("user", new User());
+	return "signup";
+    }
+
+    @PostMapping("/signup")
+    public String registerPost(@Validated User user, BindingResult result,
+	    Model model) {
+	signUpFormValidator.validate(user, result);
+	if (result.hasErrors()) {
+	    return "signup";
 	}
-
-	@RequestMapping(value = { "/home" }, method = RequestMethod.GET)
-	public String home(Model model) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String email = auth.getName();
-		User activeUser = usersService.getUserByEmail(email);
-		model.addAttribute("markList", activeUser);
-		return "home";
-	}
-
-	@GetMapping("/signup")
-	public String register(Model model) {
-		model.addAttribute("user", new User());
-		return "signup";
-	}
-
-	@PostMapping("/signup")
-	public String registerPost(@Validated User user, BindingResult result, Model model) {
-		signUpFormValidator.validate(user, result);
-		if (result.hasErrors()) {
-			return "signup";
-		}
-		usersService.addUser(user);
-		securityService.autoLogin(user.getEmail(), user.getPasswordConfirm());
-		return "redirect:home";
-	}
+	usersService.addUser(user);
+	securityService.autoLogin(user.getEmail(), user.getPasswordConfirm());
+	return "redirect:home";
+    }
 }
