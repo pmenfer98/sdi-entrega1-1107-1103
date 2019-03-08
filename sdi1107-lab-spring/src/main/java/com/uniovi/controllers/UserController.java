@@ -33,6 +33,11 @@ public class UserController {
     public String login(Model model) {
 	return "login";
     }
+    
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String loguot(Model model) {
+	return "logout";
+    }
 
     @GetMapping("/home")
     public String home(Model model) {
