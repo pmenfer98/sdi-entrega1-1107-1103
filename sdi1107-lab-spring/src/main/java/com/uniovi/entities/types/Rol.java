@@ -1,5 +1,5 @@
 package com.uniovi.entities.types;
 
 public enum Rol {
-	ADMIN, STAND;
+	ROL_ADMIN, ROL_STAND;
 }

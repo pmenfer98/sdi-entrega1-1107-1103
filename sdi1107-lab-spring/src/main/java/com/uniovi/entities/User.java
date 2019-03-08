@@ -82,7 +82,7 @@ public class User {
 		this.valid = true;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 

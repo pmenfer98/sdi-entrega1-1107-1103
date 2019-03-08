@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.uniovi.entities.User;
@@ -17,6 +18,8 @@ public class UsersService {
 	@Autowired
 	private UsersRepository usersRepository;
 
+	@Autowired
+	private BCryptPasswordEncoder encripter;
 
 	@PostConstruct
 	public void init() {
@@ -33,7 +36,7 @@ public class UsersService {
 	}
 
 	public void addUser(User user) {
-		user.setPassword(user.getPassword());
+		user.setPassword(encripter.encode(user.getPassword()));
 		usersRepository.save(user);
 	}
 
