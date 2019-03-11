@@ -16,22 +16,42 @@ public class InsertData {
 
     @PostConstruct
     public void insert() {
-	User admin = new User();
-	admin.setEmail("paferpe@crossfit.es");
-	admin.setLastName("Dios");
-	admin.setName("Pafuerte");
-	admin.setPassword("admin123");
-	admin.setPasswordConfirm("admin123");
-	admin.setRole(Rol.ROL_ADMIN);
-	us.addUser(admin);
-	User user = new User();
-	user.setEmail("cueva@subnormal.es");
-	user.setLastName("Mental");
-	user.setName("Retrasao");
-	user.setPassword("user123");
-	user.setPasswordConfirm("user123");
-	user.setRole(Rol.ROL_STAND);
-	us.addUser(user);
+	User admin1 = new User();
+	admin1.setEmail("pablo@uniovi.es");
+	admin1.setLastName("Pablo");
+	admin1.setName("Pafuerte");
+	admin1.setPassword("admin123");
+	admin1.setPasswordConfirm("admin123");
+	admin1.setRole(Rol.ROL_ADMIN);
+	us.addUser(admin1);
+	
+	User user1 = new User();
+	user1.setEmail("cristobal@uniovi.es");
+	user1.setLastName("Soler");
+	user1.setName("Cristóbal");
+	user1.setPassword("user123");
+	user1.setPasswordConfirm("user123");
+	user1.setRole(Rol.ROL_STAND);
+	us.addUser(user1);
+	
+	User user2 = new User();
+	user2.setEmail("baruque@patria.es");
+	user2.setLastName("Baruque");
+	user2.setName("Ignacio");
+	user2.setPassword("user123");
+	user2.setPasswordConfirm("user123");
+	user2.setRole(Rol.ROL_STAND);
+	us.addUser(user2);
+	
+	User user3 = new User();
+	user3.setEmail("pastrana98@gmail.es");
+	user3.setLastName("Pastrana");
+	user3.setName("Luis");
+	user3.setPassword("user123");
+	user3.setPasswordConfirm("user123");
+	user3.setRole(Rol.ROL_STAND);
+	us.addUser(user3);
+	
     }
     
 }
