@@ -16,22 +16,15 @@ public class InsertData {
 
     @PostConstruct
     public void insert() {
-	User admin = new User();
-	admin.setEmail("paferpe@crossfit.es");
-	admin.setLastName("Dios");
-	admin.setName("Pafuerte");
-	admin.setPassword("admin123");
-	admin.setPasswordConfirm("admin123");
-	admin.setRole(Rol.ROL_ADMIN);
-	us.addUser(admin);
 	User user = new User();
-	user.setEmail("cueva@subnormal.es");
-	user.setLastName("Mental");
-	user.setName("Retrasao");
-	user.setPassword("user123");
-	user.setPasswordConfirm("user123");
+	user.setEmail("paferpe@crossfit.es");
+	user.setLastName("Pablo");
+	user.setName("Pafuerte");
+	user.setPassword("admin123");
+	user.setPasswordConfirm("admin123");
 	user.setRole(Rol.ROL_STAND);
 	us.addUser(user);
+
     }
     
 }
