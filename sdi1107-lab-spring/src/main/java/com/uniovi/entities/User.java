@@ -13,7 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
-import com.uniovi.entities.types.Rol;
+import com.uniovi.entities.types.Role;
 
 @Entity
 public class User {
@@ -63,7 +63,7 @@ public class User {
 	private double money;
 
 	@Enumerated(EnumType.STRING)
-	private Rol role;
+	private Role role;
 	private boolean valid;
 
 	@OneToMany(mappedBy = "owner")
@@ -131,11 +131,11 @@ public class User {
 		this.passwordConfirm = passwordConfirm;
 	}
 
-	public Rol getRole() {
+	public Role getRole() {
 		return role;
 	}
 
-	public void setRole(Rol role) {
+	public void setRole(Role role) {
 		this.role = role;
 	}
 
