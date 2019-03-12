@@ -1,5 +1,6 @@
 package com.uniovi.entities;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -59,6 +60,7 @@ public class Sale {
 	private String details;
 	private LocalDateTime creationDate;
 	private double price;
+	private java.time.LocalDateTime date;
 	
 	@ManyToOne
 	private User owner;
@@ -73,7 +75,7 @@ public class Sale {
 	private Set<Message> messages = new HashSet<>();
 	
 	
-	private Sale() {
+	public Sale() {
 		
 	}
 	
@@ -130,6 +132,10 @@ public class Sale {
 
 	public void setMessages(Set<Message> messages) {
 		this.messages = messages;
+	}
+
+	public void setDate(java.time.LocalDateTime now) {
+	    this.date = now;	    
 	}
 	
 	
