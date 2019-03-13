@@ -8,29 +8,46 @@
 		<h2>Usuarios</h2>
 		<p>Los usuarios que actualmente figuran en el sistema son los
 			siguientes:</p>
+
+		<script th:inline="javascript">
+        /*<![CDATA[*/
+        function checkForm() {
+            var message = [[#{delete.confirm}]];
+            return confirm(message);
+        }
+        /*]]>*/
+    </script>
 		<div class="table-responsive">
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th>Email</th>
-						<th>Nombre</th>
-						<th>Apellidos</th>
-						<th class="col-md-1"></th>
-						<th class="col-md-1"></th>
-						<th class="col-md-1"></th>
-						<th class="col-md-1"></th>
-						<th class="col-md-1"></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="user : ${usersList}">
-						<td th:text="${user.email}">71888888X</td>
-						<td th:text="${user.name}">Nombre del alumno</td>
-						<td th:text="${user.lastName}">Apellidos del alumno</td>
-						<td><input type="checkbox" name="idsUser" th:value="${user.id}"/></td>
-					</tr>
-				</tbody>
-			</table>
+			<form method="post" action="/users/delete"
+				onsubmit="return checkForm()">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Email</th>
+							<th>Nombre</th>
+							<th>Apellidos</th>
+							<th class="col-md-1"></th>
+							<th class="col-md-1"></th>
+							<th class="col-md-1"></th>
+							<th class="col-md-1"></th>
+							<th class="col-md-1"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="user : ${usersList}">
+							<td th:text="${user.email}">71888888X</td>
+							<td th:text="${user.name}">Nombre del alumno</td>
+							<td th:text="${user.lastName}">Apellidos del alumno</td>
+							<td><input type="checkbox" name="idsUser"
+								th:value="${user.id}" /></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="form-group">
+					<input class="btn btn-danger" type="submit"
+						th:value="#{delete.button}" />
+				</div>
+			</form>
 		</div>
 	</div>
 	<footer th:replace="fragments/footer" />
