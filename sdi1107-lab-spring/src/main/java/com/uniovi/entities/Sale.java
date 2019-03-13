@@ -12,12 +12,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.joda.time.LocalDateTime;
 
 import com.uniovi.entities.types.SaleStatus;
 
 @Entity
+@Table(name ="SALE")
 public class Sale {
     
 	@Override
