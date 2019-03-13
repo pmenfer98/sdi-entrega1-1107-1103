@@ -36,7 +36,7 @@ public class SaleController {
 	    return "sale/add";
 	}
 	salesService.add(sale);
-	return "redirect:sale/add";
+	return "redirect:add";
     }
     
 }
