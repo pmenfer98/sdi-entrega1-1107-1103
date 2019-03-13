@@ -76,7 +76,7 @@ public class UserController {
 		return "/user/list";
 	}
     
-    @PostMapping("/user/delete")
+    @PostMapping("/user/list")
 	public String delete(@RequestParam List<Long> idsUser) {
     	for(Long id: idsUser) {
     		usersService.deleteUser(id);
