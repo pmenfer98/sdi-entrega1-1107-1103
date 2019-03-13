@@ -71,7 +71,7 @@ public class Sale {
 	private User buyer;
 	
 	@Enumerated(EnumType.STRING)
-	private SaleStatus status;
+	private SaleStatus status = SaleStatus.OUT;
 	
 	@OneToMany(mappedBy = "sale")
 	private Set<Message> messages = new HashSet<>();
@@ -79,6 +79,12 @@ public class Sale {
 	
 	public Sale() {
 		
+	}
+	
+	public Sale(String title, String details, double price) {
+	    this.title = title;
+	    this.details = details;
+	    this.price = price;
 	}
 	
 	public Long getId() {
@@ -139,9 +145,13 @@ public class Sale {
 	public void setDate(java.time.LocalDateTime now) {
 	    this.date = now;	    
 	}
-	
-	
-	
+
+	@Override
+	public String toString() {
+	    return "Sale [title=" + title + ", creationDate=" + creationDate
+		    + ", price=" + price + ", owner=" + owner.getEmail() + ", status="
+		    + status + "]";
+	}
 	
 	
 	

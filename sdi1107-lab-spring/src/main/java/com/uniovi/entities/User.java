@@ -189,4 +189,9 @@ public class User {
 		this.receivedMessages = receivedMessages;
 	}
 
+	public void addPublishedSale(Sale s) {
+	    	this.publishedSales.add(s);
+	    
+	}
+
 }
