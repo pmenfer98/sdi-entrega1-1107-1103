@@ -66,4 +66,10 @@ public class UserController {
 	securityService.autoLogin(user.getEmail(), user.getPasswordConfirm());
 	return "redirect:home";
     }
+    
+    @GetMapping("/user/list")
+	public String list(Model model) {
+		model.addAttribute("usersList", usersService.findValidStandardUser());
+		return "/user/list";
+	}
 }

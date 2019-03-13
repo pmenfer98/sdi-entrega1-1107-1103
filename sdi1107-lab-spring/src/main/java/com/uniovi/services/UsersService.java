@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.uniovi.entities.User;
+import com.uniovi.entities.types.Role;
 import com.uniovi.repositories.UsersRepository;
 
 @Service
@@ -43,9 +44,14 @@ public class UsersService {
     public User getUserByEmail(String email) {
 	return usersRepository.findByEmail(email);
     }
+    
+    public List<User> findValidStandardUser() {
+		return usersRepository.findByValidAndRole(true, Role.ROLE_STAND);
+	}
 
     public void deleteUser(Long id) {
 	usersRepository.deleteById(id);
     }
+    
 
 }
