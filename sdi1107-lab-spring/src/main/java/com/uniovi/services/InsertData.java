@@ -25,14 +25,14 @@ public class InsertData {
 	admin1.setRole(Role.ROL_ADMIN);
 	us.addUser(admin1);
 	
-	User user1 = new User();
-	user1.setEmail("cristobal@uniovi.es");
-	user1.setLastName("Soler");
-	user1.setName("Cristóbal");
-	user1.setPassword("user123");
-	user1.setPasswordConfirm("user123");
-	user1.setRole(Role.ROL_STAND);
-	us.addUser(user1);
+	User admin2 = new User();
+	admin2.setEmail("cristobal@uniovi.es");
+	admin2.setLastName("Soler");
+	admin2.setName("Cristóbal");
+	admin2.setPassword("admin123");
+	admin2.setPasswordConfirm("admin123");
+	admin2.setRole(Role.ROL_ADMIN);
+	us.addUser(admin2);
 	
 	User user2 = new User();
 	user2.setEmail("baruque@patria.es");

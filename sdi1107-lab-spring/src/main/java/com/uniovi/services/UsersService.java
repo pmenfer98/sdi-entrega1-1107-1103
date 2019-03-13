@@ -46,11 +46,13 @@ public class UsersService {
 	}
 
 	public void deleteUser(Long id) {
-		usersRepository.deleteById(id);
+		User user = usersRepository.getOne(id);
+		user.setValid(false);
+		usersRepository.save(user);
 	}
 
 	public List<User> findActiveStandardUsers() {
 		return usersRepository.findByValidAndRole(true, Role.ROL_STAND);
 	}
-
+	
 }

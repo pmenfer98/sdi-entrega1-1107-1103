@@ -2,11 +2,13 @@
 html {
 	position: relative;
 	min-height: 100%;
+	
 }
 
 body {
 	/* Margin bottom by footer height */
 	margin-bottom: 60px;
+	background-color: #fef1f1;
 }
 
 footer {
@@ -14,7 +16,8 @@ footer {
 	bottom: 0;
 	width: 100%;
 	height: 60px;
-	background-color: #101010;
+	background-color: #e63939;
+	font-color: #ffffff;
 	text-align: center;
 	line-height: 60px
 }
