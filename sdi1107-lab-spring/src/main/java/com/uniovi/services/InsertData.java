@@ -20,23 +20,52 @@ public class InsertData {
 
     @PostConstruct
     public void insert() {
-	User user = new User();
-	user.setEmail("paferpe@crossfit.es");
-	user.setLastName("Pablo");
-	user.setName("Pafuerte");
-	user.setPassword("user123");
-	user.setPasswordConfirm("user123");
-	user.setRole(Rol.ROL_STAND);
-	us.addUser(user);
-	User admin = new User();
-	admin.setEmail("cueva@subnormal.es");
-	admin.setLastName("Cueva");
-	admin.setName("Imbecil");
-	admin.setPassword("admin123");
-	admin.setPasswordConfirm("admin123");
-	admin.setRole(Rol.ROL_ADMIN);
-	us.addUser(admin);
-	ss.add(new Sale("Dildo de fibra de carbono", "Un pedazo de nabo de mentira", 20.00), user);
+	User admin1 = new User();
+	admin1.setEmail("pablo@uniovi.es");
+	admin1.setLastName("Uniovi");
+	admin1.setName("Pablo");
+	admin1.setPassword("admin123");
+	admin1.setPasswordConfirm("admin123");
+	admin1.setRole(Rol.ROL_ADMIN);
+	us.addUser(admin1);
+	
+	User admin2 = new User();
+	admin2.setEmail("cristobal@uniovi.es");
+	admin2.setLastName("Soler");
+	admin2.setName("Cristóbal");
+	admin2.setPassword("admin123");
+	admin2.setPasswordConfirm("admin123");
+	admin2.setRole(Rol.ROL_ADMIN);
+	us.addUser(admin2);
+	
+	User user1 = new User();
+	user1.setEmail("chunkyLover53@aol.com");
+	user1.setLastName("Simpson");
+	user1.setName("Homer");
+	user1.setPassword("user123");
+	user1.setPasswordConfirm("user123");
+	user1.setRole(Rol.ROL_STAND);
+	us.addUser(user1);
+	
+	User user2 = new User();
+	user2.setEmail("miguiAmpliaciones@gmail.com");
+	user2.setLastName("Rodríguez");
+	user2.setName("Miguel");
+	user2.setPassword("user123");
+	user2.setPasswordConfirm("user123");
+	user2.setRole(Rol.ROL_STAND);
+	us.addUser(user2);
+	
+	User user3 = new User();
+	user3.setEmail("pizzasPastrana@yahoo.com");
+	user3.setLastName("Álvarez");
+	user3.setName("Manolo");
+	user3.setPassword("user123");
+	user3.setPasswordConfirm("user123");
+	user3.setRole(Rol.ROL_STAND);
+	us.addUser(user3);
+	
+	ss.add(new Sale("Dildo de fibra de carbono", "Un pedazo de nabo de mentira", 20.00), user1);
     }
     
 }
