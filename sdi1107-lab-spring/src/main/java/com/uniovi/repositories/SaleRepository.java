@@ -11,5 +11,7 @@ import com.uniovi.entities.types.SaleStatus;
 public interface SaleRepository extends JpaRepository<Sale, Long>{
 
     List<Sale> findByOwnerAndStatus(User user, SaleStatus out);
+
+    Sale getSaleById(Long id);
     
 }

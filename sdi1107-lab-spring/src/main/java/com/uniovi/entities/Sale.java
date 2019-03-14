@@ -71,7 +71,7 @@ public class Sale {
 	private User buyer;
 	
 	@Enumerated(EnumType.STRING)
-	private SaleStatus status = SaleStatus.OUT;
+	private SaleStatus status = SaleStatus.ON_SALE;
 	
 	@OneToMany(mappedBy = "sale")
 	private Set<Message> messages = new HashSet<>();
