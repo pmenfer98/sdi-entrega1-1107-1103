@@ -3,6 +3,7 @@ package com.uniovi.controllers;
 import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -52,9 +53,11 @@ public class SaleController {
     }
 
     @GetMapping("/sale/list")
-    public String list(Model model, Principal principal) {
+    public String list(Model model, Pageable pageable,Principal principal) {
 	User user = usersService.getUserByEmail(principal.getName());
-	model.addAttribute("sales", salesService.findByIdAndStatus(user, SaleStatus.ON_SALE));
+	model.addAttribute("sales", salesService.findByIdAndStatus(pageable, user, SaleStatus.ON_SALE).getContent());
+	model.addAttribute("page", salesService.findByIdAndStatus(pageable, user, SaleStatus.ON_SALE));
+
 	return "sale/list";
     }
 

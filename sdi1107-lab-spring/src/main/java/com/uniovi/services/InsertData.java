@@ -66,6 +66,15 @@ public class InsertData {
 	us.addUser(user3);
 	
 	ss.add(new Sale("Dildo de fibra de carbono", "Un pedazo de nabo de mentira", 20.00), user1);
+	ss.add(new Sale("Dildo madera", "Pene de groot", 10.00), user1);
+	ss.add(new Sale("Dildo de acero inoxidable", "Pene de lobezno", 15.00), user1);
+	ss.add(new Sale("Dildo de fibra de carbono", "Un pedazo de nabo de mentira", 20.00), user1);
+	ss.add(new Sale("Dildo madera", "Pene de groot", 10.00), user1);
+	ss.add(new Sale("Dildo de acero inoxidable", "Pene de lobezno", 15.00), user1);
+	ss.add(new Sale("Tractor amarillo", "Que es lo que se lleva ahora", 200.00), user2);
+	ss.add(new Sale("Esteroides", "Buena mierda pa tu body", 40.00), user2);
+	ss.add(new Sale("Medio pollo de coca", "Llega la navidad", 700.00), user3);
+	ss.add(new Sale("Dildo goma", "Pene de Mr. Fantastico", 8.00), user3);
     }
     
 }
