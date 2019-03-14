@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.uniovi.entities.Sale;
@@ -42,16 +43,25 @@ public class SaleController {
 	if (result.hasErrors()) {
 	    return "sale/add";
 	}
+	System.out.println("Sale: " + sale.getTitle() + "**********************************");
+	System.out.println("Details: " + sale.getDetails() + "**********************************");
+	System.out.println("Price: " + sale.getPrice() + "**********************************");
 	User user = usersService.getUserByEmail(principal.getName());
 	salesService.add(sale, user);
-	return "redirect:add";
+	return "redirect:list";
     }
 
     @GetMapping("/sale/list")
     public String list(Model model, Principal principal) {
 	User user = usersService.getUserByEmail(principal.getName());
-	model.addAttribute("sales", salesService.findByIdAndStatus(user, SaleStatus.OUT));
+	model.addAttribute("sales", salesService.findByIdAndStatus(user, SaleStatus.ON_SALE));
 	return "sale/list";
     }
 
+    @GetMapping("/sale/delete/{id}")
+	public String delete(@PathVariable Long id) {
+		salesService.delete(id);
+		return "redirect:/sale/list";
+	}
+    
 }

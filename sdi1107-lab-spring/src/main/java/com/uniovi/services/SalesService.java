@@ -1,6 +1,5 @@
 package com.uniovi.services;
 
-
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -23,22 +22,27 @@ public class SalesService {
     @PostConstruct
     public void init() {
     }
-    
+
     public void add(Sale sale, User user) {
 	sale.setCreationDate(LocalDateTime.now());
 	sale.setOwner(user);
 	salesRepository.save(sale);
-	for(Sale s: salesRepository.findAll()) {
+	for (Sale s : salesRepository.findAll()) {
 	    System.out.println(s.toString());
 	}
     }
 
     public List<Sale> findByIdAndStatus(User user, SaleStatus out) {
-	for(Sale s: salesRepository.findByOwnerAndStatus(user, out)) {
+	for (Sale s : salesRepository.findByOwnerAndStatus(user, out)) {
 	    System.out.println(s.toString());
 	}
 	return salesRepository.findByOwnerAndStatus(user, out);
     }
-    
-    
+
+    public void delete(Long id) {
+	Sale sale = salesRepository.getSaleById(id);
+	sale.setStatus(SaleStatus.OUT);
+	salesRepository.save(sale);
+    }
+
 }
