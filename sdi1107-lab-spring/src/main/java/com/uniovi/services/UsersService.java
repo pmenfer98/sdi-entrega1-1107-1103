@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.uniovi.entities.Sale;
 import com.uniovi.entities.User;
 import com.uniovi.entities.types.Role;
 import com.uniovi.repositories.SaleRepository;

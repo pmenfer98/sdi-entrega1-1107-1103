@@ -160,4 +160,8 @@ public class Sale {
 				+ owner.getEmail() + ", status=" + status + "]";
 	}
 
+	public java.time.LocalDateTime getDate() {
+		return date;
+	}
+
 }

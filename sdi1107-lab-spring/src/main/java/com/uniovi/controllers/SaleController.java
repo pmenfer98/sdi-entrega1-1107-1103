@@ -52,16 +52,11 @@ public class SaleController {
 		return "redirect:list";
 	}
 
-    @GetMapping("/sale/list")
-    public String list(Model model, Pageable pageable,Principal principal) {
-	User user = usersService.getUserByEmail(principal.getName());
-	model.addAttribute("sales", salesService.findByIdAndStatus(pageable, user, SaleStatus.ON_SALE).getContent());
-	model.addAttribute("page", salesService.findByIdAndStatus(pageable, user, SaleStatus.ON_SALE));
-
-	return "sale/list";
-    }
-
-		model.addAttribute("sales", salesService.findByIdAndStatus(user, SaleStatus.ON_SALE));
+	@GetMapping("/sale/list")
+	public String list(Model model, Pageable pageable, Principal principal) {
+		User user = usersService.getUserByEmail(principal.getName());
+		model.addAttribute("sales", salesService.findByIdAndStatus(pageable, user, SaleStatus.ON_SALE).getContent());
+		model.addAttribute("page", salesService.findByIdAndStatus(pageable, user, SaleStatus.ON_SALE));
 
 		return "sale/list";
 	}
@@ -69,16 +64,15 @@ public class SaleController {
 	@GetMapping("/sale/listAll")
 	public String listAll(Model model, Principal principal,
 			@RequestParam(value = "", required = false) String searchText) {
-		
+
 		User user = usersService.getUserByEmail(principal.getName());
-		
+
 		if (searchText != null && !searchText.isEmpty()) {
 			model.addAttribute("sales", salesService.findBySaleName(searchText, user.getId()));
-			
-		}else {
+
+		} else {
 			model.addAttribute("sales", salesService.findOthers(user.getId()));
 		}
-		
 
 		return "sale/listAll";
 	}
@@ -98,14 +92,14 @@ public class SaleController {
 		}
 		return "redirect:/sale/listAll?error";
 	}
-	
+
 	@GetMapping("/sale/listOwn")
 	public String checkBoughtSales(Principal principal, Model model) {
 		User user = usersService.getUserByEmail(principal.getName());
 		String email = user.getEmail();
-		model.addAttribute("sales",salesService.searchBoughtSales(email));
+		model.addAttribute("sales", salesService.searchBoughtSales(email));
 		return "sale/listOwn";
-		
+
 	}
 
 }

@@ -37,19 +37,21 @@ public class SalesService {
 		for (Sale s : salesRepository.findAll()) {
 			System.out.println(s.toString());
 		}
-    public Page<Sale> findByIdAndStatus(Pageable pageable, User user, SaleStatus out) {
-	for (Sale s : salesRepository.findByOwnerAndStatus(pageable, user, out)) {
-	    System.out.println(s.toString());
 	}
-	return salesRepository.findByOwnerAndStatus(pageable, user, out);
-    }
 
-	public List<Sale> findByIdAndStatus(User user, SaleStatus out) {
-		for (Sale s : salesRepository.findByOwnerAndStatus(user, out)) {
+	public Page<Sale> findByIdAndStatus(Pageable pageable, User user, SaleStatus out) {
+		for (Sale s : salesRepository.findByOwnerAndStatus(pageable, user, out)) {
 			System.out.println(s.toString());
 		}
-		return salesRepository.findByOwnerAndStatus(user, out);
+		return salesRepository.findByOwnerAndStatus(pageable, user, out);
 	}
+
+//	public List<Sale> findByIdAndStatus(User user, SaleStatus out) {
+//		for (Sale s : salesRepository.findByOwnerAndStatus(user, out)) {
+//			System.out.println(s.toString());
+//		}
+//		return salesRepository.findByOwnerAndStatus(user, out);
+//	}
 
 	public void delete(Long id) {
 		Sale sale = salesRepository.getSaleById(id);
@@ -57,9 +59,10 @@ public class SalesService {
 		salesRepository.save(sale);
 	}
 
-	
-	  public List<Sale> findOthers(Long id){ List<Sale> sales = salesRepository.findOthers(id); return sales; }
-	 
+	public List<Sale> findOthers(Long id) {
+		List<Sale> sales = salesRepository.findOthers(id);
+		return sales;
+	}
 
 	public List<Sale> findAllSales() {
 		List<Sale> sales = salesRepository.findAll();
@@ -86,7 +89,7 @@ public class SalesService {
 
 	public List<Sale> findBySaleName(String searchText, Long id) {
 		List<Sale> sales = new ArrayList<>();
-		searchText = "%"+searchText+"%";
+		searchText = "%" + searchText + "%";
 		sales = salesRepository.searchBySaleName(searchText, id);
 		return sales;
 	}
@@ -95,9 +98,7 @@ public class SalesService {
 		List<Sale> sales = new ArrayList<>();
 		sales = salesRepository.searchBoughtSales(email);
 		return sales;
-		
+
 	}
-	
-	
 
 }
