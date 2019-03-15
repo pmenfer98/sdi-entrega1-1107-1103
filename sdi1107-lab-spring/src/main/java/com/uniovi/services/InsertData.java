@@ -44,6 +44,7 @@ public class InsertData {
 	user1.setName("Homer");
 	user1.setPassword("user123");
 	user1.setPasswordConfirm("user123");
+	user1.setMoney(500000);
 	user1.setRole(Role.ROLE_STAND);
 	us.addUser(user1);
 	
@@ -53,6 +54,7 @@ public class InsertData {
 	user2.setName("Miguel");
 	user2.setPassword("user123");
 	user2.setPasswordConfirm("user123");
+	user2.setMoney(500.0);
 	user2.setRole(Role.ROLE_STAND);
 	us.addUser(user2);
 	
@@ -62,10 +64,18 @@ public class InsertData {
 	user3.setName("Manolo");
 	user3.setPassword("user123");
 	user3.setPasswordConfirm("user123");
+	user3.setMoney(100.0);
 	user3.setRole(Role.ROLE_STAND);
 	us.addUser(user3);
 	
-	ss.add(new Sale("Dildo de fibra de carbono", "Un pedazo de nabo de mentira", 20.00), user1);
+	ss.add(new Sale("Raqueta de tenis Babolat", "Con cordajes y grips recambiables", 90.00), user1);
+	ss.add(new Sale("Set de discos olímpicos Eleiko", "10, 15 y 20 kg", 80), user1);
+	ss.add(new Sale("Fin de semana en una casa rural en Faluya, Siria", "Con piscina y vistas al campo de minas (Precio por día)", 70), user1);
+	ss.add(new Sale("Seat Panda", "Un coche", 20000.00), user2);
+	ss.add(new Sale("Película Dolor y Dinero", "Una de las mejores películas del director Michael Bay", 10.0), user2);
+	ss.add(new Sale("Carcasa de pugs para móvil", "Disponible para Xiaomi y Apple", 5.00), user2);
+	ss.add(new Sale("Set de dinosaurios de juguete", "Fantásticos para pasar el día en familia", 100.00), user3);
+	ss.add(new Sale("Pórtatil Acer", "No funciona bien y es rojo", 700.00), user3);
     }
     
 }

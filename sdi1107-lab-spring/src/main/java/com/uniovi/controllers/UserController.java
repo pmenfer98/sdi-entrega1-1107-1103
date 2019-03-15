@@ -23,64 +23,62 @@ import com.uniovi.validators.SignUpFormValidator;
 @Controller
 public class UserController {
 
-    @Autowired
-    private UsersService usersService;
+	@Autowired
+	private UsersService usersService;
 
-    @Autowired
-    private SignUpFormValidator signUpFormValidator;
+	@Autowired
+	private SignUpFormValidator signUpFormValidator;
 
-    @Autowired
-    private SecurityService securityService;
+	@Autowired
+	private SecurityService securityService;
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(Model model) {
-	return "login";
-    }
-    
-    @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String loguot(Model model) {
-	return "logout";
-    }
-
-    @GetMapping("/home")
-    public String home(Model model) {
-	Authentication auth = SecurityContextHolder.getContext()
-		.getAuthentication();
-	String email = auth.getName();
-	User activeUser = usersService.getUserByEmail(email);
-	model.addAttribute("markList", activeUser);
-	return "home";
-    }
-
-    @GetMapping("/signup")
-    public String register(Model model) {
-	model.addAttribute("user", new User());
-	return "signup";
-    }
-
-    @PostMapping("/signup")
-    public String registerPost(@Validated User user, BindingResult result,
-	    Model model) {
-	signUpFormValidator.validate(user, result);
-	if (result.hasErrors()) {
-	    return "signup";
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(Model model) {
+		return "login";
 	}
-	usersService.addUser(user);
-	securityService.autoLogin(user.getEmail(), user.getPasswordConfirm());
-	return "redirect:home";
-    }
-    
-    @GetMapping("/user/list")
+
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String loguot(Model model) {
+		return "logout";
+	}
+
+	@GetMapping("/home")
+	public String home(Model model) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String email = auth.getName();
+		User activeUser = usersService.getUserByEmail(email);
+		model.addAttribute("markList", activeUser);
+		return "home";
+	}
+
+	@GetMapping("/signup")
+	public String register(Model model) {
+		model.addAttribute("user", new User());
+		return "signup";
+	}
+
+	@PostMapping("/signup")
+	public String registerPost(@Validated User user, BindingResult result, Model model) {
+		signUpFormValidator.validate(user, result);
+		if (result.hasErrors()) {
+			return "signup";
+		}
+		usersService.addUser(user);
+		securityService.autoLogin(user.getEmail(), user.getPasswordConfirm());
+		return "redirect:home";
+	}
+
+	@GetMapping("/user/list")
 	public String list(Model model) {
 		model.addAttribute("usersList", usersService.findValidStandardUser());
 		return "/user/list";
 	}
-    
-    @PostMapping("/user/list")
+
+	@PostMapping("/user/list")
 	public String delete(@RequestParam List<Long> idsUser) {
-    	for(Long id: idsUser) {
-    		usersService.deleteUser(id);
-    	}
+		for (Long id : idsUser) {
+			usersService.deleteUser(id);
+		}
 		return "redirect:/user/list";
 	}
 }
