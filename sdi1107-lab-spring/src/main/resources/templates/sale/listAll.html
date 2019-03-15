@@ -11,7 +11,7 @@
 	<form class="navbar-form" action="/sale/listAll">
 		<div class="form-group">
 			<input name="searchText" type="text" class="form-control" size="50"
-				placeholder="Buscar por nombre de artículo">
+				placeholder="Buscar por nombre de artï¿½culo">
 		</div>
 		<button type="submit" class="btn btn-default">Buscar</button>
 	</form>
@@ -41,14 +41,16 @@
 					<td th:text="${sale.price}">Column content</td>
 					<td>
 						<form method="get" th:attr="action=${'/sale/buy/' + sale.id}">
-							<input type="submit" class="btn btn-danger"
+							<input th:if="${sale.buyer}==null" type="submit" class="btn btn-primary"
 								th:attr="value=#{list.buy}" />
 						</form>
+						<p th:if="${sale.buyer}!=null" th:text="#{list.bought}"><p/>
 					</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
+	<footer th:replace="fragments/pagination"/>
 	</main>
 	<footer th:replace="fragments/footer" />
 </body>

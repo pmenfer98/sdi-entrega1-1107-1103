@@ -62,16 +62,18 @@ public class SaleController {
 	}
 
 	@GetMapping("/sale/listAll")
-	public String listAll(Model model, Principal principal,
+	public String listAll(Pageable pageable, Model model, Principal principal,
 			@RequestParam(value = "", required = false) String searchText) {
 
 		User user = usersService.getUserByEmail(principal.getName());
 
 		if (searchText != null && !searchText.isEmpty()) {
-			model.addAttribute("sales", salesService.findBySaleName(searchText, user.getId()));
+			model.addAttribute("sales", salesService.findBySaleName(pageable, searchText, user.getId()).getContent());
+			model.addAttribute("page", salesService.findBySaleName(pageable, searchText, user.getId()));
 
 		} else {
-			model.addAttribute("sales", salesService.findOthers(user.getId()));
+			model.addAttribute("sales", salesService.findOthers(pageable, user.getId()).getContent());
+			model.addAttribute("page", salesService.findOthers(pageable, user.getId()));
 		}
 
 		return "sale/listAll";
@@ -94,10 +96,11 @@ public class SaleController {
 	}
 
 	@GetMapping("/sale/listOwn")
-	public String checkBoughtSales(Principal principal, Model model) {
+	public String checkBoughtSales(Pageable pageable, Principal principal, Model model) {
 		User user = usersService.getUserByEmail(principal.getName());
 		String email = user.getEmail();
-		model.addAttribute("sales", salesService.searchBoughtSales(email));
+		model.addAttribute("sales", salesService.searchBoughtSales(pageable, email).getContent());
+		model.addAttribute("page", salesService.searchBoughtSales(pageable, email));
 		return "sale/listOwn";
 
 	}

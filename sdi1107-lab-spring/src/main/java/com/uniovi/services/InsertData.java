@@ -72,10 +72,16 @@ public class InsertData {
 	ss.add(new Sale("Set de discos olímpicos Eleiko", "10, 15 y 20 kg", 80), user1);
 	ss.add(new Sale("Fin de semana en una casa rural en Faluya, Siria", "Con piscina y vistas al campo de minas (Precio por día)", 70), user1);
 	ss.add(new Sale("Seat Panda", "Un coche", 20000.00), user2);
-	ss.add(new Sale("Película Dolor y Dinero", "Una de las mejores películas del director Michael Bay", 10.0), user2);
+	ss.add(new Sale("Película Dolor y Dinero", "Un cancer de película, casi vomito 7 veces", 10.0), user2);
 	ss.add(new Sale("Carcasa de pugs para móvil", "Disponible para Xiaomi y Apple", 5.00), user2);
 	ss.add(new Sale("Set de dinosaurios de juguete", "Fantásticos para pasar el día en familia", 100.00), user3);
 	ss.add(new Sale("Pórtatil Acer", "No funciona bien y es rojo", 700.00), user3);
+	ss.add(new Sale("Dildo de plata", "No usar si eres vampiro", 90.00), user1);
+	ss.add(new Sale("Dildo de cobre", "Dildo del primo Jonatan", 80), user1);
+	ss.add(new Sale("Camiseta Powerexplosive", "Pa ser el reshulon del gym", 20.00), user1);
+	ss.add(new Sale("Disco de ACDC Back in Black", "La puta crema", 15.00), user1);
+	ss.add(new Sale("Gladiator", "Esta si que es una peli de verdad ostia", 10.0), user2);
+	ss.add(new Sale("Pulp Fiction", "Aprende lo que es el cine Paferpe", 5.00), user2);
     }
     
 }

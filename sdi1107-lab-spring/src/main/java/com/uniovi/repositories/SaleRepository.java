@@ -13,7 +13,7 @@ import com.uniovi.entities.types.SaleStatus;
 
 public interface SaleRepository extends JpaRepository<Sale, Long> {
 
-    Page<Sale> findByOwnerAndStatus(Pageable pageable, User user, SaleStatus out);
+    	Page<Sale> findByOwnerAndStatus(Pageable pageable, User user, SaleStatus out);
 
 	Sale getSaleById(Long id);
 
@@ -26,17 +26,17 @@ public interface SaleRepository extends JpaRepository<Sale, Long> {
 	Page<Sale> searchAll(Pageable pageable);*/
 	
 	@Query("SELECT S FROM Sale S WHERE (S.status = 'ON_SALE' OR S.status = 'HIGHLIGHTED' OR S.status = 'SOLD') AND S.owner.id !=?1")
-	List<Sale>findOthers(Long id);
+	Page<Sale>findOthers(Pageable pageable, Long id);
 	
-	List<Sale>findAll();
+	Page<Sale>findAll(Pageable pageable);
 
 	
 	@Query("SELECT S FROM Sale S"
 			+ " WHERE (S.status = 'ON_SALE' OR S.status = 'HIGHLIGHTED')"
 					+ " AND S.owner.id != ?2 "
 					+ "AND S.title LIKE ?1")
-	List<Sale> searchBySaleName(String searchText, Long id);
+	Page<Sale> searchBySaleName(Pageable pageable, String searchText, Long id);
 
 	@Query("SELECT S FROM Sale S WHERE S.buyer.email = ?1")
-	List<Sale> searchBoughtSales(String email);
+	Page<Sale> searchBoughtSales(Pageable pageable, String email);
 }
