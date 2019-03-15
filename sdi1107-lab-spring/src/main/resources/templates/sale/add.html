@@ -19,26 +19,26 @@
 	<!-- Barra de Navegación superior -->
 
 	<div class="container">
-		<h2>Agregar Oferta</h2>
+		<h2 th:text = "#{addSaleWindow.message}"></h2>
 		<form class="form-horizontal" method="post" action="/sale/add"
 			th:object="${sale}">
 			<fieldset>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="titulo">Titulo:</label>
+					<label class="control-label col-sm-2" for="titulo" th:text = "#{addSaleTitle.message}"></label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" name="titulo"
 							th:field="${sale.title}" placeholder="Disco: AC/DC" required="true" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="detalles">Detalles:</label>
+					<label class="control-label col-sm-2" for="detalles" th:text = "#{saleDetails.message}"></label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" name="detalles"
 							th:field="${sale.details}" placeholder="Perfecto estado, seminuevo..." required="true" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="precio">Precio:</label>
+					<label class="control-label col-sm-2" for="precio" th:text = "#{salePrice.message}"></label>
 					<div class="col-sm-10">
 						<input type="number" class="form-control" name="precio" min="1"
 							th:field="${sale.price}" placeholder="Mayor que 0" required="true" />
@@ -46,8 +46,7 @@
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" class="btn btn-primary">Subir
-							Producto</button>
+						<button type="submit" class="btn btn-primary" th:text = "#{upload.message}"></button>
 					</div>
 				</div>
 			</fieldset>

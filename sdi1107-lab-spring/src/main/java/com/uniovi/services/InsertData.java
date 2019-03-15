@@ -44,7 +44,7 @@ public class InsertData {
 	user1.setName("Homer");
 	user1.setPassword("user123");
 	user1.setPasswordConfirm("user123");
-	user1.setMoney(500000);
+	user1.setMoney(100.0);
 	user1.setRole(Role.ROLE_STAND);
 	us.addUser(user1);
 	
@@ -54,7 +54,7 @@ public class InsertData {
 	user2.setName("Miguel");
 	user2.setPassword("user123");
 	user2.setPasswordConfirm("user123");
-	user2.setMoney(500.0);
+	user2.setMoney(100.0);
 	user2.setRole(Role.ROLE_STAND);
 	us.addUser(user2);
 	
