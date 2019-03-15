@@ -7,6 +7,8 @@ import javax.annotation.PostConstruct;
 
 import org.joda.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.uniovi.entities.Sale;
@@ -35,7 +37,12 @@ public class SalesService {
 		for (Sale s : salesRepository.findAll()) {
 			System.out.println(s.toString());
 		}
+    public Page<Sale> findByIdAndStatus(Pageable pageable, User user, SaleStatus out) {
+	for (Sale s : salesRepository.findByOwnerAndStatus(pageable, user, out)) {
+	    System.out.println(s.toString());
 	}
+	return salesRepository.findByOwnerAndStatus(pageable, user, out);
+    }
 
 	public List<Sale> findByIdAndStatus(User user, SaleStatus out) {
 		for (Sale s : salesRepository.findByOwnerAndStatus(user, out)) {

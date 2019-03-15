@@ -1,7 +1,7 @@
 package com.uniovi.repositories;
 
-import java.util.List;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -11,7 +11,7 @@ import com.uniovi.entities.types.SaleStatus;
 
 public interface SaleRepository extends JpaRepository<Sale, Long> {
 
-	List<Sale> findByOwnerAndStatus(User user, SaleStatus out);
+    Page<Sale> findByOwnerAndStatus(Pageable pageable, User user, SaleStatus out);
 
 	Sale getSaleById(Long id);
 

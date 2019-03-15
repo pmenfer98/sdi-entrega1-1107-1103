@@ -1,8 +1,11 @@
 package com.uniovi.tests;
 
 import java.util.concurrent.TimeUnit;
-import org.junit.*;
-import org.openqa.selenium.*;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class WallapopTests {
