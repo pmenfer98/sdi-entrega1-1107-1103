@@ -10,6 +10,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.uniovi.entities.Sale;
 import com.uniovi.entities.User;
@@ -21,47 +22,84 @@ import com.uniovi.validators.SaleValidator;
 @Controller
 public class SaleController {
 
-    @Autowired
-    private SalesService salesService;
+	@Autowired
+	private SalesService salesService;
 
-    @Autowired
-    private SaleValidator saleValidator;
+	@Autowired
+	private SaleValidator saleValidator;
 
-    @Autowired
-    private UsersService usersService;
+	@Autowired
+	private UsersService usersService;
 
-    @GetMapping("/sale/add")
-    public String register(Model model) {
-	model.addAttribute("sale", new Sale());
-	return "sale/add";
-    }
-
-    @PostMapping("/sale/add")
-    public String registerPost(@Validated Sale sale, BindingResult result,
-	    Principal principal) {
-	saleValidator.validate(sale, result);
-	if (result.hasErrors()) {
-	    return "sale/add";
+	@GetMapping("/sale/add")
+	public String register(Model model) {
+		model.addAttribute("sale", new Sale());
+		return "sale/add";
 	}
-	System.out.println("Sale: " + sale.getTitle() + "**********************************");
-	System.out.println("Details: " + sale.getDetails() + "**********************************");
-	System.out.println("Price: " + sale.getPrice() + "**********************************");
-	User user = usersService.getUserByEmail(principal.getName());
-	salesService.add(sale, user);
-	return "redirect:list";
-    }
 
-    @GetMapping("/sale/list")
-    public String list(Model model, Principal principal) {
-	User user = usersService.getUserByEmail(principal.getName());
-	model.addAttribute("sales", salesService.findByIdAndStatus(user, SaleStatus.ON_SALE));
-	return "sale/list";
-    }
+	@PostMapping("/sale/add")
+	public String registerPost(@Validated Sale sale, BindingResult result, Principal principal) {
+		saleValidator.validate(sale, result);
+		if (result.hasErrors()) {
+			return "sale/add";
+		}
+		System.out.println("Sale: " + sale.getTitle() + "**********************************");
+		System.out.println("Details: " + sale.getDetails() + "**********************************");
+		System.out.println("Price: " + sale.getPrice() + "**********************************");
+		User user = usersService.getUserByEmail(principal.getName());
+		salesService.add(sale, user);
+		return "redirect:list";
+	}
 
-    @GetMapping("/sale/delete/{id}")
+	@GetMapping("/sale/list")
+	public String list(Model model, Principal principal) {
+		User user = usersService.getUserByEmail(principal.getName());
+
+		model.addAttribute("sales", salesService.findByIdAndStatus(user, SaleStatus.ON_SALE));
+
+		return "sale/list";
+	}
+
+	@GetMapping("/sale/listAll")
+	public String listAll(Model model, Principal principal,
+			@RequestParam(value = "", required = false) String searchText) {
+		
+		User user = usersService.getUserByEmail(principal.getName());
+		
+		if (searchText != null && !searchText.isEmpty()) {
+			model.addAttribute("sales", salesService.findBySaleName(searchText, user.getId()));
+			
+		}else {
+			model.addAttribute("sales", salesService.findOthers(user.getId()));
+		}
+		
+
+		return "sale/listAll";
+	}
+
+	@GetMapping("/sale/delete/{id}")
 	public String delete(@PathVariable Long id) {
 		salesService.delete(id);
 		return "redirect:/sale/list";
 	}
-    
+
+	@GetMapping("/sale/buy/{id}")
+	public String buy(@PathVariable Long id, Principal principal) {
+		User user = usersService.getUserByEmail(principal.getName());
+		Sale sale = salesService.findById(id);
+		if (salesService.buy(sale, user)) {
+			return "redirect:/sale/listAll?success";
+		}
+		return "redirect:/sale/listAll?error";
+	}
+	
+	@GetMapping("/sale/listOwn")
+	public String checkBoughtSales(Principal principal, Model model) {
+		User user = usersService.getUserByEmail(principal.getName());
+		String email = user.getEmail();
+		model.addAttribute("sales",salesService.searchBoughtSales(email));
+		return "sale/listOwn";
+		
+	}
+
 }
