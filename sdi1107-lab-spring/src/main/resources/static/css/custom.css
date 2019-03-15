@@ -18,4 +18,8 @@ footer {
 	text-align: center;
 	line-height: 60px
 }
+
+#money-text{
+	margin-top: 8px;
+}
 /* Sticky footer styles-------------------------------------------------- */

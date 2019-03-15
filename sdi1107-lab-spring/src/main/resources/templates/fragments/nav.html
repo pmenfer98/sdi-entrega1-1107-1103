@@ -9,7 +9,7 @@
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
-				<li><a href="/">Home</a></li>
+				<li><a href="/home">Home</a></li>
 				<li id="users-menu" class="dropdown" th:if="${#strings.contains(#authentication.principal.authorities, 'ROLE_ADMIN')}"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">
 						Gestión de Usuarios <span class="caret"></span>
@@ -28,6 +28,12 @@
 						<li><a href="/sale/listAll">Ver todas las ofertas</a></li>
 						<li><a href="/sale/listOwn">Ofertas compradas</a></li>
 					</ul>
+				</li>
+				<li id="money-label" th:if="${#strings.contains(#authentication.principal.authorities, 'ROLE_STAND')}">
+					<a th:text="#{user.money}"></a>
+				</li>
+				<li id="money-text" th:if="${#strings.contains(#authentication.principal.authorities, 'ROLE_STAND')}">
+					<input type="text" th:attr="value=${money}+' €'" class="form-control" disabled></input>
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">

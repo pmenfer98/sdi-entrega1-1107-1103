@@ -1,6 +1,10 @@
 package com.uniovi.controllers;
 
+import java.security.Principal;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -43,7 +47,8 @@ public class UserController {
 	}
 
 	@GetMapping("/home")
-	public String home(Model model) {
+	public String home(Model model, Principal principal) {
+	    	model.addAttribute("money", usersService.findByEmail(principal.getName()).getMoney());
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String email = auth.getName();
 		User activeUser = usersService.getUserByEmail(email);
@@ -69,7 +74,8 @@ public class UserController {
 	}
 
 	@GetMapping("/user/list")
-	public String list(Model model) {
+	public String list(Model model, Principal principal) {
+	    	model.addAttribute("money", usersService.findByEmail(principal.getName()).getMoney());
 		model.addAttribute("usersList", usersService.findValidStandardUser());
 		return "/user/list";
 	}

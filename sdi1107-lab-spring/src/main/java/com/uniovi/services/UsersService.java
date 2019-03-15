@@ -59,6 +59,10 @@ public class UsersService {
 		user.getPublishedSales().forEach(x -> saleRepository.delete(x));
 		usersRepository.deleteById(id);
 	}
+
+	public User findByEmail(String email) {
+	    return usersRepository.findByEmail(email);
+	}
 	
 
 
