@@ -78,8 +78,11 @@ public class SalesService {
 	    sale.setBuyer(user);
 	    sale.setStatus(SaleStatus.SOLD);
 	    salesRepository.save(sale);
-	    double money = user.getMoney() - sale.getPrice();
-	    user.setMoney(money);
+	    double moneyBuyer = user.getMoney() - sale.getPrice();
+	    double moneySeller = sale.getOwner().getMoney() + sale.getPrice();
+	    user.setMoney(moneyBuyer);
+	    sale.getOwner().setMoney(moneySeller);
+	    usersRepository.save(sale.getOwner());
 	    usersRepository.save(user);
 	    return true;
 	}
