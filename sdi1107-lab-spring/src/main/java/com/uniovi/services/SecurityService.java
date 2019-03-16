@@ -38,7 +38,7 @@ public class SecurityService {
 	UsernamePasswordAuthenticationToken aToken;
 	aToken = new UsernamePasswordAuthenticationToken(userDetails, password,
 		userDetails.getAuthorities());
-	if(usersService.getUserByEmail(userDetails.getUsername()).isValid())
+	if (usersService.getUserByEmail(userDetails.getUsername()).isValid())
 		authenticationManager.authenticate(aToken);
 	if (aToken.isAuthenticated()) {
 	    SecurityContextHolder.getContext().setAuthentication(aToken);
