@@ -8,14 +8,6 @@
 		<h2 th:text = "#{userList.message}"></h2>
 		<p th:text = "#{usersInTheSystem.message}"></p>
 
-		<script th:inline="javascript">
-        /*<![CDATA[*/
-        function checkForm() {
-            var message = [[#{delete.confirm}]];
-            return confirm(message);
-        }
-        /*]]>*/
-    </script>
 		<div class="table-responsive">
 			<form method="post" action="/user/list"
 				onsubmit="return checkForm()">
