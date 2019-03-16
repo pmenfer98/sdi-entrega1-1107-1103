@@ -38,10 +38,6 @@ public class UserController {
 		return "login";
 	}
 
-	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public String loguot(Model model) {
-		return "logout";
-	}
 
 	@GetMapping("/home")
 	public String home(Model model, Principal principal) {
@@ -69,6 +65,12 @@ public class UserController {
 		securityService.autoLogin(user.getEmail(), user.getPasswordConfirm());
 		return "redirect:home";
 	}
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String loguot(Model model) {
+		return "logout";
+	}
+
 
 	@GetMapping("/user/list")
 	public String list(Model model, Principal principal) {

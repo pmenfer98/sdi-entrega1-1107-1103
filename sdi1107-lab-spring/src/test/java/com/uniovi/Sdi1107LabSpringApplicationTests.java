@@ -1,16 +1,21 @@
 package com.uniovi;
 
-import static org.junit.Assert.*;
-
 import java.util.List;
 
-import org.junit.*;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import com.uniovi.utils.SeleniumUtils;
 
 //Ordenamos las pruebas por el nombre del método
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -172,47 +177,99 @@ public class Sdi1107LabSpringApplicationTests {
 
 	@Test
 	public void testLogout() throws Exception {
-		driver.get("http://localhost:8090/home");
+		driver.get("http://localhost:8090/login?logout");
+		driver.findElement(By.name("username")).click();
+		driver.findElement(By.name("username")).clear();
+		driver.findElement(By.name("username")).sendKeys("chunkyLover53@aol.com");
+		driver.findElement(By.name("password")).click();
+		driver.findElement(By.name("password")).clear();
+		driver.findElement(By.name("password")).sendKeys("user123");
+		driver.findElement(By.name("password")).sendKeys(Keys.ENTER);
+		SeleniumUtils.esperarSegundos(driver, 2);
 		driver.findElement(By.id("Desconectar")).click();
 	}
 
 	@Test
 	public void testUsuariosEnElSistema() throws Exception {
-		driver.get("http://localhost:8090/home");
+		driver.get("http://localhost:8090/login?logout");
+		driver.findElement(By.name("username")).clear();
+		driver.findElement(By.name("username")).sendKeys("admin@email.com");
+		driver.findElement(By.name("password")).clear();
+		driver.findElement(By.name("password")).sendKeys("admin");
+		driver.findElement(By.id("loginButton")).click();
+		SeleniumUtils.esperarSegundos(driver, 2);
 		driver.findElement(By.linkText("Gestión de usuarios")).click();
 		driver.findElement(By.linkText("Usuarios")).click();
 	}
 
 	@Test
 	public void testEliminarPrimerUsuario() throws Exception {
-		driver.get("http://localhost:8090/home");
-		driver.findElement(By.linkText("Gestión de usuarios")).click();
-		driver.findElement(By.linkText("Usuarios")).click();
-		driver.findElements(By.className("borrar")).get(0);
-		driver.findElement(By.id("deleteButton")).click();
+		driver.get("http://localhost:8090/login?logout");
+	    driver.findElement(By.name("username")).click();
+	    driver.findElement(By.name("username")).clear();
+	    driver.findElement(By.name("username")).sendKeys("admin@email.com");
+	    driver.findElement(By.name("password")).clear();
+	    driver.findElement(By.name("password")).sendKeys("admin");
+	    driver.findElement(By.name("password")).sendKeys(Keys.ENTER);
+	    SeleniumUtils.esperarSegundos(driver, 2);
+	    driver.findElement(By.linkText("Gestión de usuarios")).click();
+	    driver.findElement(By.linkText("Usuarios")).click();
+	    driver.findElement(By.name("idsUser")).click();
+	    driver.findElements(By.className("borrar")).get(0);
+	    SeleniumUtils.esperarSegundos(driver, 2);
+	    driver.findElement(By.id("deleteButton")).click();
 
 	}
 
 	@Test
 	public void testEliminarÚltimoUsuario() throws Exception {
-		driver.get("http://localhost:8090/user/list");
-		driver.findElement(By.id("deleteButton")).click();
-		driver.findElement(By.id("deleteButton")).click();
-		List<WebElement> a = driver.findElements(By.className("borrar"));
-		driver.findElements(By.className("borrar")).get(a.size() - 1);
+		
+		 driver.get("http://localhost:8090/");
+		    driver.findElement(By.linkText("Entrar")).click();
+		    driver.findElement(By.name("username")).click();
+		    driver.findElement(By.name("username")).clear();
+		    driver.findElement(By.name("username")).sendKeys("admin@email.com");
+		    driver.findElement(By.name("password")).click();
+		    driver.findElement(By.name("password")).clear();
+		    driver.findElement(By.name("password")).sendKeys("admin");
+		    driver.findElement(By.id("loginButton")).click();
+		    SeleniumUtils.esperarSegundos(driver, 2);
+		    driver.findElement(By.linkText("Gestión de usuarios")).click();
+		    driver.findElement(By.linkText("Usuarios")).click();
+		    driver.findElement(By.name("idsUser")).click();
+		    SeleniumUtils.esperarSegundos(driver, 2);
+		    driver.findElement(By.id("deleteButton")).click();
+		    List<WebElement> a = driver.findElements(By.className("borrar"));
+			driver.findElements(By.className("borrar")).get(a.size() - 1);
+		
+
 	}
 
 	@Test
 	public void testEliminarTresUsuarios() throws Exception {
-		driver.get("http://localhost:8090/home");
-		driver.findElement(By.linkText("Gestión de usuarios")).click();
-		driver.findElement(By.linkText("Usuarios")).click();
-		driver.findElement(By.name("idsUser")).click();
-		driver.findElement(By.id("deleteButton")).click();
-		driver.findElement(By.id("deleteButton")).click();
-		driver.findElement(By.id("deleteButton")).click();
+		 driver.get("http://localhost:8090/login");
+		    driver.findElement(By.name("username")).click();
+		    driver.findElement(By.name("username")).clear();
+		    driver.findElement(By.name("username")).sendKeys("admin@email.com");
+		    driver.findElement(By.name("password")).clear();
+		    driver.findElement(By.name("password")).sendKeys("admin");
+		    driver.findElement(By.name("password")).sendKeys(Keys.ENTER);
+		    SeleniumUtils.esperarSegundos(driver, 2);
+		    driver.findElement(By.linkText("Gestión de usuarios")).click();
+		    driver.findElement(By.linkText("Usuarios")).click();
+		    driver.findElement(By.name("idsUser")).click();
+		    driver.findElement(By.name("idsUser")).click();
+		    driver.findElement(By.name("idsUser")).click();
+		    SeleniumUtils.esperarSegundos(driver, 2);
+		    driver.findElement(By.id("deleteButton")).click();
+		    List<WebElement> a = driver.findElements(By.className("borrar"));
+			driver.findElements(By.className("borrar")).get(0);
+			driver.findElements(By.className("borrar")).get(1);
+			driver.findElements(By.className("borrar")).get(2);
+		
 	}
-
+	
+/*
 	@Test
 	public void testAgregarUnaOfertaValida() throws Exception {
 		driver.get("http://localhost:8090/home");
@@ -309,5 +366,5 @@ public class Sdi1107LabSpringApplicationTests {
 				"(.//*[normalize-space(text()) and normalize-space(.)='Fantásticos para pasar el día en familia'])[1]/following::input[1]"))
 				.click();
 	}
-
+*/
 }
