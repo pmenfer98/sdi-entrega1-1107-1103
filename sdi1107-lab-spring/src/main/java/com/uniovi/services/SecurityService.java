@@ -16,6 +16,9 @@ public class SecurityService {
     private AuthenticationManager authenticationManager;
 
     @Autowired
+    private UsersService usersService;
+    
+    @Autowired
     private UserDetailsService userDetailsService;
 
     private static final Logger logger = LoggerFactory
@@ -35,7 +38,8 @@ public class SecurityService {
 	UsernamePasswordAuthenticationToken aToken;
 	aToken = new UsernamePasswordAuthenticationToken(userDetails, password,
 		userDetails.getAuthorities());
-	authenticationManager.authenticate(aToken);
+	if(usersService.getUserByEmail(userDetails.getUsername()).isValid())
+		authenticationManager.authenticate(aToken);
 	if (aToken.isAuthenticated()) {
 	    SecurityContextHolder.getContext().setAuthentication(aToken);
 	    logger.debug(String.format("Auto login %s successfully!", email));
