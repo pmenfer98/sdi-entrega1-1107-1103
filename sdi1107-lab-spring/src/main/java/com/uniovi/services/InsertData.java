@@ -21,22 +21,14 @@ public class InsertData {
     @PostConstruct
     public void insert() {
 	User admin1 = new User();
-	admin1.setEmail("pablo@uniovi.es");
+	admin1.setEmail("admin@email.com");
 	admin1.setLastName("Uniovi");
-	admin1.setName("Pablo");
-	admin1.setPassword("admin123");
-	admin1.setPasswordConfirm("admin123");
+	admin1.setName("Admin");
+	admin1.setPassword("admin");
+	admin1.setPasswordConfirm("admin");
 	admin1.setRole(Role.ROLE_ADMIN);
 	us.addUser(admin1);
 	
-	User admin2 = new User();
-	admin2.setEmail("cristobal@uniovi.es");
-	admin2.setLastName("Soler");
-	admin2.setName("Cristóbal");
-	admin2.setPassword("admin123");
-	admin2.setPasswordConfirm("admin123");
-	admin2.setRole(Role.ROLE_ADMIN);
-	us.addUser(admin2);
 	
 	User user1 = new User();
 	user1.setEmail("chunkyLover53@aol.com");
@@ -68,20 +60,35 @@ public class InsertData {
 	user3.setRole(Role.ROLE_STAND);
 	us.addUser(user3);
 	
+	User user4 = new User();
+	user4.setEmail("pablo@uniovi.es");
+	user4.setLastName("Uniovi");
+	user4.setName("Pablo");
+	user4.setPassword("user123");
+	user4.setPasswordConfirm("user123");
+	user4.setMoney(100.0);
+	user4.setRole(Role.ROLE_STAND);
+	us.addUser(user4);
+	
+	
 	ss.add(new Sale("Raqueta de tenis Babolat", "Con cordajes y grips recambiables", 90.00), user1);
 	ss.add(new Sale("Set de discos olímpicos Eleiko", "10, 15 y 20 kg", 80), user1);
-	ss.add(new Sale("Fin de semana en una casa rural en Faluya, Siria", "Con piscina y vistas al campo de minas (Precio por día)", 70), user1);
+	ss.add(new Sale("Fin de semana en una casa rural en Soria", "Con piscina y jardín", 70), user1);
 	ss.add(new Sale("Seat Panda", "Un coche", 20000.00), user2);
-	ss.add(new Sale("Película Dolor y Dinero", "Un cancer de película, casi vomito 7 veces", 10.0), user2);
+	ss.add(new Sale("Película Dolor y Dinero", "Película del director Michael Bay", 10.0), user2);
 	ss.add(new Sale("Carcasa de pugs para móvil", "Disponible para Xiaomi y Apple", 5.00), user2);
 	ss.add(new Sale("Set de dinosaurios de juguete", "Fantásticos para pasar el día en familia", 100.00), user3);
 	ss.add(new Sale("Pórtatil Acer", "No funciona bien y es rojo", 700.00), user3);
-	ss.add(new Sale("Dildo de plata", "No usar si eres vampiro", 90.00), user1);
-	ss.add(new Sale("Dildo de cobre", "Dildo del primo Jonatan", 80), user1);
-	ss.add(new Sale("Camiseta Powerexplosive", "Pa ser el reshulon del gym", 20.00), user1);
-	ss.add(new Sale("Disco de ACDC Back in Black", "La puta crema", 15.00), user1);
-	ss.add(new Sale("Gladiator", "Esta si que es una peli de verdad ostia", 10.0), user2);
-	ss.add(new Sale("Pulp Fiction", "Aprende lo que es el cine Paferpe", 5.00), user2);
+	ss.add(new Sale("Reloj de cuco", "Sale el cuco cada hora", 90.00), user1);
+	ss.add(new Sale("Salvar al soldado Ryan", "Película de la segunda guerra mundial", 80), user1);
+	ss.add(new Sale("Camiseta Powerexplosive", "Perfecta para entrenar", 20.00), user1);
+	ss.add(new Sale("Disco de ACDC Back in Black", "Emblemático disco de la banda de Hard Rock", 15.00), user1);
+	ss.add(new Sale("Gladiator", "Película sobre el imperio romano", 10.0), user2);
+	ss.add(new Sale("Pulp Fiction", "Película clásica", 5.00), user2);
+	ss.add(new Sale("Cronómetro", "Con opciones de hora", 15.00), user3);
+	ss.add(new Sale("Cargador de portátil Acer", "Funciona a veces", 20.00), user3);
+	ss.add(new Sale("Zapatillas adidas", "Perfectas para correr e ir al gimnasio", 30.00), user3);
+	
     }
     
 }

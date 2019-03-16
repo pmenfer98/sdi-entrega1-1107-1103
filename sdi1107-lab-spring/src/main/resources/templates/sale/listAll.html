@@ -41,17 +41,22 @@
 					<td th:text="${sale.price}">Column content</td>
 					<td>
 						<form method="get" th:attr="action=${'/sale/buy/' + sale.id}">
-							<input th:if="${sale.buyer}==null" type="submit" class="btn btn-primary"
-								th:attr="value=#{list.buy}" />
+							<input th:if="${sale.buyer}==null" type="submit"
+								class="btn btn-primary" th:attr="value=#{list.buy}" />
 						</form>
-						<p th:if="${sale.buyer}!=null" th:text="#{list.bought}"><p/>
+						<p th:if="${sale.buyer}!=null" th:text="#{list.bought}">
+						<p />
 					</td>
 				</tr>
 			</tbody>
 		</table>
+		<div th:if="${param.error}"
+			class="alert alert-dismissible alert-warning">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<strong th:text="#{errorMoney.message}" id="buyButton">Error!</strong>
+		</div>
 	</div>
-	<footer th:replace="fragments/pagination"/>
-	</main>
+	<footer th:replace="fragments/pagination" /> </main>
 	<footer th:replace="fragments/footer" />
 </body>
 

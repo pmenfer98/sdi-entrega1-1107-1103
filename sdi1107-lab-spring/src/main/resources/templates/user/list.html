@@ -38,13 +38,13 @@
 							<td th:text="${user.name}"></td>
 							<td th:text="${user.lastName}"></td>
 							<td><input type="checkbox" name="idsUser"
-								th:value="${user.id}" /></td>
+								th:value="${user.id}" class="borrar"/></td>
 						</tr>
 					</tbody>
 				</table>
 				<div class="form-group">
 					<input class="btn btn-danger" type="submit"
-						th:value="#{delete.button}" />
+						th:value="#{delete.button}" id = "deleteButton" />
 				</div>
 			</form>
 		</div>
