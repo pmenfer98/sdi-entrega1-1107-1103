@@ -13,7 +13,7 @@
 			<input name="searchText" type="text" class="form-control" size="50"
 				placeholder="Buscar por nombre de art�culo">
 		</div>
-		<button type="submit" class="btn btn-default">Buscar</button>
+		<button type="submit" class="btn btn-default" id = "searchButton" th:text = "#{search.message}"></button>
 	</form>
 
 
@@ -42,7 +42,7 @@
 					<td>
 						<form method="get" th:attr="action=${'/sale/buy/' + sale.id}">
 							<input th:if="${sale.buyer}==null" type="submit"
-								class="btn btn-primary" th:attr="value=#{list.buy}" />
+								class="btn btn-primary" id = "buyButton" th:attr="value=#{list.buy}" />
 						</form>
 						<p th:if="${sale.buyer}!=null" th:text="#{list.bought}">
 						<p />
@@ -53,7 +53,7 @@
 		<div th:if="${param.error}"
 			class="alert alert-dismissible alert-warning">
 			<button type="button" class="close" data-dismiss="alert">&times;</button>
-			<strong th:text="#{errorMoney.message}" id="buyButton">Error!</strong>
+			<strong th:text="#{errorMoney.message}">Error!</strong>
 		</div>
 	</div>
 	<footer th:replace="fragments/pagination" /> </main>
