@@ -28,7 +28,7 @@
                 <td th:text="${sale.price}">Column content</td>
                 <td>
                     <form method="get" th:attr="action=${'/sale/delete/' + sale.id}">
-                        <input type="submit" class="btn btn-danger" th:attr="value=#{list.delete}"/>
+                        <input type="submit" class="btn btn-danger" id="buttonDelete" th:attr="value=#{list.delete}"/>
                     </form>
                 </td>
             </tr>

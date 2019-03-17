@@ -70,6 +70,36 @@ public class InsertData {
 	user4.setRole(Role.ROLE_STAND);
 	us.addUser(user4);
 	
+	User user5 = new User();
+	user5.setEmail("chocolatesPaco@gmail.com");
+	user5.setLastName("Muñoz");
+	user5.setName("Paco");
+	user5.setPassword("user123");
+	user5.setPasswordConfirm("user123");
+	user5.setMoney(100.0);
+	user5.setRole(Role.ROLE_STAND);
+	us.addUser(user5);
+	
+	User user6 = new User();
+	user6.setEmail("danielLlana_98@gmail.com");
+	user6.setLastName("Llana");
+	user6.setName("Daniel");
+	user6.setPassword("user123");
+	user6.setPasswordConfirm("user123");
+	user6.setMoney(100.0);
+	user6.setRole(Role.ROLE_STAND);
+	us.addUser(user6);
+	
+	User user7 = new User();
+	user7.setEmail("davidFandos@gmail.com");
+	user7.setLastName("Fandos");
+	user7.setName("David");
+	user7.setPassword("user123");
+	user7.setPasswordConfirm("user123");
+	user7.setMoney(100.0);
+	user7.setRole(Role.ROLE_STAND);
+	us.addUser(user7);
+	
 	
 	ss.add(new Sale("Raqueta de tenis Babolat", "Con cordajes y grips recambiables", 90.00), user1);
 	ss.add(new Sale("Set de discos olímpicos Eleiko", "10, 15 y 20 kg", 80), user1);
