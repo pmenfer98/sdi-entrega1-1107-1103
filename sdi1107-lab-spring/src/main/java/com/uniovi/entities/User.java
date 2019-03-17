@@ -74,12 +74,6 @@ public class User {
 	@OneToMany(mappedBy = "buyer")
 	private Set<Sale> boughtSales = new HashSet<>();
 
-	@OneToMany(mappedBy = "sender")
-	private Set<Message> sentMessages = new HashSet<>();
-
-	@OneToMany(mappedBy = "receiver")
-	private Set<Message> receivedMessages = new HashSet<>();
-
 	public User() {
 		this.valid = true;
 	}
@@ -171,22 +165,6 @@ public class User {
 
 	public void setBoughtSales(Set<Sale> boughtSales) {
 		this.boughtSales = boughtSales;
-	}
-
-	public Set<Message> getSentMessages() {
-		return sentMessages;
-	}
-
-	public void setSentMessages(Set<Message> sentMessages) {
-		this.sentMessages = sentMessages;
-	}
-
-	public Set<Message> getReceivedMessages() {
-		return receivedMessages;
-	}
-
-	public void setReceivedMessages(Set<Message> receivedMessages) {
-		this.receivedMessages = receivedMessages;
 	}
 
 	public void addPublishedSale(Sale s) {

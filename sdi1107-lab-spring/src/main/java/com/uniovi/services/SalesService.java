@@ -40,7 +40,6 @@ public class SalesService {
 	    SaleStatus out) {
 	for (Sale s : salesRepository.findByOwnerAndStatus(pageable, user,
 		out)) {
-	    System.out.println(s.toString());
 	}
 	return salesRepository.findByOwnerAndStatus(pageable, user, out);
     }

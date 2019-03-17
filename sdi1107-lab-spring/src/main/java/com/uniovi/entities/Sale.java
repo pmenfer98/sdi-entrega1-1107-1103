@@ -38,9 +38,6 @@ public class Sale {
     @Enumerated(EnumType.STRING)
     private SaleStatus status = SaleStatus.ON_SALE;
 
-    @OneToMany(mappedBy = "sale")
-    private Set<Message> messages = new HashSet<>();
-
     private String dateString;
 
     public Sale() {
@@ -149,14 +146,6 @@ public class Sale {
 
     public void setBuyer(User buyer) {
 	this.buyer = buyer;
-    }
-
-    public Set<Message> getMessages() {
-	return messages;
-    }
-
-    public void setMessages(Set<Message> messages) {
-	this.messages = messages;
     }
 
     public void setDate(java.time.LocalDateTime now) {
