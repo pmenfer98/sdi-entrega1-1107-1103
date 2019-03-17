@@ -118,6 +118,21 @@ public class InsertData {
 	ss.add(new Sale("Cronómetro", "Con opciones de hora", 15.00), user3);
 	ss.add(new Sale("Cargador de portátil Acer", "Funciona a veces", 20.00), user3);
 	ss.add(new Sale("Zapatillas adidas", "Perfectas para correr e ir al gimnasio", 30.00), user3);
+	ss.add(new Sale("Camiseta de Ronaldo", "Camiseta de Cristiano Ronaldo de la Juventus", 50.00), user4);
+	ss.add(new Sale("Camiseta de Messi", "Camiseta de Lionel Messi en el FCB", 50.00), user4);
+	ss.add(new Sale("Botas de futbol adidas", "Botas para jugar al futbol en cesped", 35.00), user4);
+	ss.add(new Sale("Balon antiguo", "Pelota de futbol antigua pero en perfecto estado", 10.00), user4);
+	ss.add(new Sale("Libro Codigo Da Vinci", "Novela icónica de drama", 10.00), user5);
+	ss.add(new Sale("Movil Xiaomi", "Xiaomi Redmi Note 6 Pro", 100.00), user5);
+	ss.add(new Sale("IPhone 6", "IPhone 6 en perfecto estado", 200.00), user5);
+	ss.add(new Sale("Carcasa IPhone 6", "Carcasa roja para IPhone 6 de goma", 5.00), user5);
+	ss.add(new Sale("Cascos IPhone", "Solo se oye el derecho", 3.00), user6);
+	ss.add(new Sale("Poster Breaking Bad", "Poster del logo de Breaking Bad", 10.00), user6);
+	ss.add(new Sale("Abrigo Pull and Bear", "Abrigo para el invierno", 30.00), user6);
+	ss.add(new Sale("Caja sorpresa", "El contenido de la caja es un secreto", 8.00), user6);
+	ss.add(new Sale("Cadena de oro", "Cadenita muy crema", 60.00), user7);
+	ss.add(new Sale("Anillos de oro", "Anillitos tambien muy crema", 40.00), user7);
+	ss.add(new Sale("Camiseta de los lakers", "Cami to guapa", 60.00), user7);
 	
     }
     
