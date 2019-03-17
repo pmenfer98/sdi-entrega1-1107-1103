@@ -2,8 +2,6 @@ package com.uniovi.entities;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -12,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 import com.uniovi.entities.types.SaleStatus;
 
@@ -27,7 +24,7 @@ public class Sale {
     private String details;
     private LocalDateTime creationDate;
     private double price;
-    private java.time.LocalDateTime date;
+
 
     @ManyToOne
     private User owner;
@@ -148,9 +145,6 @@ public class Sale {
 	this.buyer = buyer;
     }
 
-    public void setDate(java.time.LocalDateTime now) {
-	this.date = now;
-    }
 
     public String getDateString(LocalDateTime creationDate) {
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -164,8 +158,6 @@ public class Sale {
 		+ ", status=" + status + "]";
     }
 
-    public java.time.LocalDateTime getDate() {
-	return date;
-    }
+
 
 }

@@ -1,7 +1,5 @@
 package com.uniovi.services;
 
-import java.time.LocalDateTime;
-
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,9 +36,6 @@ public class SalesService {
 
     public Page<Sale> findByIdAndStatus(Pageable pageable, User user,
 	    SaleStatus out) {
-	for (Sale s : salesRepository.findByOwnerAndStatus(pageable, user,
-		out)) {
-	}
 	return salesRepository.findByOwnerAndStatus(pageable, user, out);
     }
 

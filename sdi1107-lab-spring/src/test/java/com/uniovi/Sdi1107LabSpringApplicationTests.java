@@ -8,17 +8,23 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import com.uniovi.utils.SeleniumUtils;
 
 //Ordenamos las pruebas por el nombre del método
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 
 public class Sdi1107LabSpringApplicationTests {
 	// En Windows (Debe ser la versión 65.0.1 y desactivar las actualizacioens
@@ -443,6 +449,7 @@ public class Sdi1107LabSpringApplicationTests {
 		    driver.findElement(By.name("password")).clear();
 		    driver.findElement(By.name("password")).sendKeys("user123");
 		    driver.findElement(By.name("password")).sendKeys(Keys.ENTER);
+		    SeleniumUtils.esperarSegundos(driver, 2);
 		    driver.findElement(By.linkText("Ofertas")).click();
 		    driver.findElement(By.linkText("Ofertas disponibles")).click();
 		    driver.findElement(By.id("buyButton")).click();
