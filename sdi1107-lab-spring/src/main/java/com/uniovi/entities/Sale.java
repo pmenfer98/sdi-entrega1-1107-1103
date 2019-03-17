@@ -1,5 +1,7 @@
 package com.uniovi.entities;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,156 +14,169 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import org.joda.time.LocalDateTime;
-
 import com.uniovi.entities.types.SaleStatus;
 
 @Entity
 public class Sale {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	private String title;
-	private String details;
-	private LocalDateTime creationDate;
-	private double price;
-	private java.time.LocalDateTime date;
+    private String title;
+    private String details;
+    private LocalDateTime creationDate;
+    private double price;
+    private java.time.LocalDateTime date;
 
-	@ManyToOne
-	private User owner;
+    @ManyToOne
+    private User owner;
 
-	@ManyToOne
-	private User buyer;
+    @ManyToOne
+    private User buyer;
 
-	@Enumerated(EnumType.STRING)
-	private SaleStatus status = SaleStatus.ON_SALE;
+    @Enumerated(EnumType.STRING)
+    private SaleStatus status = SaleStatus.ON_SALE;
 
-	@OneToMany(mappedBy = "sale")
-	private Set<Message> messages = new HashSet<>();
+    @OneToMany(mappedBy = "sale")
+    private Set<Message> messages = new HashSet<>();
 
-	public Sale() {
+    private String dateString;
 
-	}
+    public Sale() {
 
-	public Sale(String title, String details, double price) {
-		this.title = title;
-		this.details = details;
-		this.price = price;
-	}
+    }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((creationDate == null) ? 0 : creationDate.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
+    public Sale(String title, String details, double price) {
+	this.title = title;
+	this.details = details;
+	this.price = price;
+	setCreationDate(LocalDateTime.now());
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Sale other = (Sale) obj;
-		if (creationDate == null) {
-			if (other.creationDate != null)
-				return false;
-		} else if (!creationDate.equals(other.creationDate))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
-	}
+    @Override
+    public int hashCode() {
+	final int prime = 31;
+	int result = 1;
+	result = prime * result
+		+ ((creationDate == null) ? 0 : creationDate.hashCode());
+	result = prime * result + ((id == null) ? 0 : id.hashCode());
+	return result;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    @Override
+    public boolean equals(Object obj) {
+	if (this == obj)
+	    return true;
+	if (obj == null)
+	    return false;
+	if (getClass() != obj.getClass())
+	    return false;
+	Sale other = (Sale) obj;
+	if (creationDate == null) {
+	    if (other.creationDate != null)
+		return false;
+	} else if (!creationDate.equals(other.creationDate))
+	    return false;
+	if (id == null) {
+	    if (other.id != null)
+		return false;
+	} else if (!id.equals(other.id))
+	    return false;
+	return true;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public Long getId() {
+	return id;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public String getTitle() {
+	return title;
+    }
 
-	public String getDetails() {
-		return details;
-	}
+    public void setTitle(String title) {
+	this.title = title;
+    }
 
-	public void setDetails(String details) {
-		this.details = details;
-	}
+    public String getDetails() {
+	return details;
+    }
 
-	public LocalDateTime getCreationDate() {
-		return creationDate;
-	}
+    public void setDetails(String details) {
+	this.details = details;
+    }
 
-	public void setCreationDate(LocalDateTime creationDate) {
-		this.creationDate = creationDate;
-	}
+    public LocalDateTime getCreationDate() {
+	return creationDate;
+    }
 
-	public double getPrice() {
-		return price;
-	}
+    public void setCreationDate(LocalDateTime creationDate) {
+	this.creationDate = creationDate;
+	this.dateString = getDateString(creationDate);
+    }
 
-	public void setPrice(double price) {
-		this.price = price;
-	}
+    public double getPrice() {
+	return price;
+    }
+    
+    public String getDateString() {
+	return dateString;
+    }
 
-	public User getOwner() {
-		return owner;
-	}
+    public void setPrice(double price) {
+	this.price = price;
+    }
 
-	public void setOwner(User owner) {
-		this.owner = owner;
-	}
+    public User getOwner() {
+	return owner;
+    }
 
-	public SaleStatus getStatus() {
-		return status;
-	}
+    public void setOwner(User owner) {
+	this.owner = owner;
+    }
 
-	public void setStatus(SaleStatus status) {
-		this.status = status;
-	}
+    public SaleStatus getStatus() {
+	return status;
+    }
 
-	public User getBuyer() {
-		return buyer;
-	}
+    public void setStatus(SaleStatus status) {
+	this.status = status;
+    }
 
-	public void setBuyer(User buyer) {
-		this.buyer = buyer;
-	}
+    public User getBuyer() {
+	return buyer;
+    }
 
-	public Set<Message> getMessages() {
-		return messages;
-	}
+    public void setBuyer(User buyer) {
+	this.buyer = buyer;
+    }
 
-	public void setMessages(Set<Message> messages) {
-		this.messages = messages;
-	}
+    public Set<Message> getMessages() {
+	return messages;
+    }
 
-	public void setDate(java.time.LocalDateTime now) {
-		this.date = now;
-	}
+    public void setMessages(Set<Message> messages) {
+	this.messages = messages;
+    }
 
-	@Override
-	public String toString() {
-		return "Sale [title=" + title + ", creationDate=" + creationDate + ", price=" + price + ", owner="
-				+ owner.getEmail() + ", status=" + status + "]";
-	}
+    public void setDate(java.time.LocalDateTime now) {
+	this.date = now;
+    }
 
-	public java.time.LocalDateTime getDate() {
-		return date;
-	}
+    public String getDateString(LocalDateTime creationDate) {
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	return creationDate.format(formatter);
+    }
+
+    @Override
+    public String toString() {
+	return "Sale [title=" + title + ", creationDate=" + creationDate
+		+ ", price=" + price + ", owner=" + owner.getEmail()
+		+ ", status=" + status + "]";
+    }
+
+    public java.time.LocalDateTime getDate() {
+	return date;
+    }
 
 }

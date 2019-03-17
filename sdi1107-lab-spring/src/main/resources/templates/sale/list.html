@@ -18,6 +18,7 @@
                 <th scope="col" th:text="#{sales.add.title}">Column heading</th>
                 <th scope="col" th:text="#{sales.add.details}">Column heading</th>
                 <th scope="col" th:text="#{sales.add.price}">Email</th>
+                <th scope="col" th:text="#{sales.add.date}">Email</th>
                 <th scope="col"></th>
             </tr>
             </thead>
@@ -26,6 +27,7 @@
                 <td th:text="${sale.title}">Column content</td>
                 <td th:text="${sale.details}">Column content</td>
                 <td th:text="${sale.price}">Column content</td>
+                <td th:text="${sale.dateString}">Column content</td>
                 <td>
                     <form method="get" th:attr="action=${'/sale/delete/' + sale.id}">
                         <input type="submit" class="btn btn-danger" id="buttonDelete" th:attr="value=#{list.delete}"/>

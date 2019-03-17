@@ -1,8 +1,9 @@
 package com.uniovi.services;
 
+import java.time.LocalDateTime;
+
 import javax.annotation.PostConstruct;
 
-import org.joda.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,7 +29,6 @@ public class SalesService {
     }
 
     public void add(Sale sale, User user) {
-	sale.setCreationDate(LocalDateTime.now());
 	sale.setOwner(user);
 	salesRepository.save(sale);
 	for (Sale s : salesRepository.findAll()) {
