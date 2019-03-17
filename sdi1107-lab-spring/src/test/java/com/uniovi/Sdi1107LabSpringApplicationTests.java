@@ -58,7 +58,7 @@ public class Sdi1107LabSpringApplicationTests {
 	}
 
 	@Test
-	public void testRegiterConDatosValidos() throws Exception {
+	public void prueba1() throws Exception {
 		driver.get("http://localhost:8090/signup");
 		driver.findElement(By.name("name")).click();
 		driver.findElement(By.name("name")).clear();
@@ -79,7 +79,7 @@ public class Sdi1107LabSpringApplicationTests {
 	}
 
 	@Test
-	public void testRegisterNombreApellidoCorreoVacios() throws Exception {
+	public void prueba2() throws Exception {
 		driver.get("http://localhost:8090/signup");
 		driver.findElement(By.name("password")).click();
 		driver.findElement(By.name("password")).clear();
@@ -90,7 +90,7 @@ public class Sdi1107LabSpringApplicationTests {
 	}
 
 	@Test
-	public void testRegisterContraseñasInvalidas() throws Exception {
+	public void prueba3() throws Exception {
 		driver.get("http://localhost:8090/signup");
 		driver.findElement(By.name("name")).click();
 		driver.findElement(By.name("name")).clear();
@@ -107,7 +107,7 @@ public class Sdi1107LabSpringApplicationTests {
 	}
 
 	@Test
-	public void testRegisterEmailExistente() throws Exception {
+	public void prueba4() throws Exception {
 		driver.get("http://localhost:8090/signup");
 		driver.findElement(By.name("name")).click();
 		driver.findElement(By.name("name")).clear();
@@ -125,7 +125,7 @@ public class Sdi1107LabSpringApplicationTests {
 	}
 
 	@Test
-	public void testLoginAdminValido() throws Exception {
+	public void prueba5() throws Exception {
 		driver.get("http://localhost:8090/login");
 		driver.findElement(By.name("username")).click();
 		driver.findElement(By.name("username")).clear();
@@ -136,7 +136,7 @@ public class Sdi1107LabSpringApplicationTests {
 	}
 
 	@Test
-	public void testLoginStandardValido() throws Exception {
+	public void prueba6() throws Exception {
 		driver.get("http://localhost:8090/login?logout");
 		driver.findElement(By.name("username")).click();
 		driver.findElement(By.name("username")).clear();
@@ -148,13 +148,13 @@ public class Sdi1107LabSpringApplicationTests {
 	}
 
 	@Test
-	public void testLoginStandardVacio() throws Exception {
+	public void prueba7() throws Exception {
 		driver.get("http://localhost:8090/login?logout");
 		driver.findElement(By.id("loginButton")).click();
 	}
 
 	@Test
-	public void testLoginStandardContraseñaIncorrecta() throws Exception {
+	public void prueba8() throws Exception {
 		driver.get("http://localhost:8090/login?logout");
 		driver.findElement(By.name("username")).clear();
 		driver.findElement(By.name("username")).sendKeys("pablo@uniovi.es");
@@ -165,7 +165,7 @@ public class Sdi1107LabSpringApplicationTests {
 	}
 
 	@Test
-	public void testLoginStandardEmailIncorrecto() throws Exception {
+	public void prueba9() throws Exception {
 		driver.get("http://localhost:8090/login?error");
 		driver.findElement(By.name("username")).click();
 		driver.findElement(By.name("username")).clear();
@@ -176,7 +176,7 @@ public class Sdi1107LabSpringApplicationTests {
 	}
 
 	@Test
-	public void testLogout() throws Exception {
+	public void prueba10() throws Exception {
 		driver.get("http://localhost:8090/login");
 		driver.findElement(By.name("username")).clear();
 		driver.findElement(By.name("username")).sendKeys("admin@email.com");
@@ -186,9 +186,16 @@ public class Sdi1107LabSpringApplicationTests {
 		SeleniumUtils.esperarSegundos(driver, 2);
 		driver.findElement(By.id("Desconectar")).click();
 	}
+	
+	 @Test
+	  public void prueba11() throws Exception {
+	    driver.get("http://localhost:8090/");
+	    driver.findElement(By.id("myNavbar")).click();
+	    SeleniumUtils.textoNoPresentePagina(driver, "Desconectar");
+	  }
 
 	@Test
-	public void testUsuariosEnElSistema() throws Exception {
+	public void prueba12() throws Exception {
 		driver.get("http://localhost:8090/login?logout");
 		driver.findElement(By.name("username")).clear();
 		driver.findElement(By.name("username")).sendKeys("admin@email.com");
@@ -201,7 +208,7 @@ public class Sdi1107LabSpringApplicationTests {
 	}
 
 	@Test
-	public void testEliminarPrimerUsuario() throws Exception {
+	public void prueba13() throws Exception {
 		driver.get("http://localhost:8090/login?logout");
 		driver.findElement(By.name("username")).click();
 		driver.findElement(By.name("username")).clear();
@@ -220,7 +227,7 @@ public class Sdi1107LabSpringApplicationTests {
 	}
 
 	@Test
-	public void testEliminarÚltimoUsuario() throws Exception {
+	public void prueba14() throws Exception {
 
 		driver.get("http://localhost:8090/");
 		driver.findElement(By.linkText("Entrar")).click();
@@ -243,7 +250,7 @@ public class Sdi1107LabSpringApplicationTests {
 	}
 
 	@Test
-	public void testEliminarTresUsuarios() throws Exception {
+	public void prueba15() throws Exception {
 		driver.get("http://localhost:8090/login");
 		driver.findElement(By.name("username")).click();
 		driver.findElement(By.name("username")).clear();
@@ -266,11 +273,11 @@ public class Sdi1107LabSpringApplicationTests {
 	}
 
 	@Test
-	public void testAgregarUnaOfertaValida() throws Exception {
+	public void prueba16() throws Exception {
 		driver.get("http://localhost:8090/login");
 		driver.findElement(By.name("username")).click();
 		driver.findElement(By.name("username")).clear();
-		driver.findElement(By.name("username")).sendKeys("chunkyLover53@aol.com");
+		driver.findElement(By.name("username")).sendKeys("danielLlana_98@gmail.com");
 		driver.findElement(By.name("password")).click();
 		driver.findElement(By.name("password")).clear();
 		driver.findElement(By.name("password")).sendKeys("user123");
@@ -291,12 +298,12 @@ public class Sdi1107LabSpringApplicationTests {
 	}
 
 	@Test
-	public void testAgregarOfertaInvalida() throws Exception {
+	public void prueba17() throws Exception {
 		driver.get("http://localhost:8090/");
 		driver.findElement(By.linkText("Entrar")).click();
 		driver.findElement(By.name("username")).click();
 		driver.findElement(By.name("username")).clear();
-		driver.findElement(By.name("username")).sendKeys("chunkyLover53@aol.com");
+		driver.findElement(By.name("username")).sendKeys("danielLlana_98@gmail.com");
 		driver.findElement(By.name("password")).click();
 		driver.findElement(By.name("password")).clear();
 		driver.findElement(By.name("password")).sendKeys("user123");
@@ -312,7 +319,7 @@ public class Sdi1107LabSpringApplicationTests {
 	}
 
 	@Test
-	public void testListarMisOfertas() throws Exception {
+	public void prueba18() throws Exception {
 		driver.get("http://localhost:8090/login?logout");
 		driver.findElement(By.name("username")).click();
 		driver.findElement(By.name("username")).clear();
@@ -327,11 +334,11 @@ public class Sdi1107LabSpringApplicationTests {
 	}
 
 	@Test
-	public void testBorrarPrimeraOferta() throws Exception {
+	public void prueba19() throws Exception {
 		driver.get("http://localhost:8090/login");
 		driver.findElement(By.name("username")).click();
 		driver.findElement(By.name("username")).clear();
-		driver.findElement(By.name("username")).sendKeys("chunkyLover53@aol.com");
+		driver.findElement(By.name("username")).sendKeys("danielLlana_98@gmail.com");
 		driver.findElement(By.name("password")).click();
 		driver.findElement(By.name("password")).clear();
 		driver.findElement(By.name("password")).sendKeys("user123");
@@ -343,11 +350,11 @@ public class Sdi1107LabSpringApplicationTests {
 	}
 
 	@Test
-	public void testBorrarUltimaOferta() throws Exception {
+	public void prueba20() throws Exception {
 		driver.get("http://localhost:8090/login?logout");
 		driver.findElement(By.name("username")).click();
 		driver.findElement(By.name("username")).clear();
-		driver.findElement(By.name("username")).sendKeys("chunkyLover53@aol.com");
+		driver.findElement(By.name("username")).sendKeys("danielLlana_98@gmail.com");
 		driver.findElement(By.name("password")).click();
 		driver.findElement(By.name("password")).clear();
 		driver.findElement(By.name("password")).sendKeys("user123");
@@ -360,11 +367,11 @@ public class Sdi1107LabSpringApplicationTests {
 	}
 
 	@Test
-	public void testBuscarCampoVacio() throws Exception {
+	public void prueba21() throws Exception {
 		driver.get("http://localhost:8090/login?logout");
 		driver.findElement(By.name("username")).click();
 		driver.findElement(By.name("username")).clear();
-		driver.findElement(By.name("username")).sendKeys("chunkyLover53@aol.com");
+		driver.findElement(By.name("username")).sendKeys("danielLlana_98@gmail.com");
 		driver.findElement(By.name("password")).click();
 		driver.findElement(By.name("password")).clear();
 		driver.findElement(By.name("password")).sendKeys("user123");
@@ -376,11 +383,11 @@ public class Sdi1107LabSpringApplicationTests {
 	}
 
 	@Test
-	public void testBuscarInexistente() throws Exception {
+	public void prueba22() throws Exception {
 		driver.get("http://localhost:8090/login?logout");
 		driver.findElement(By.name("username")).click();
 		driver.findElement(By.name("username")).clear();
-		driver.findElement(By.name("username")).sendKeys("chunkyLover53@aol.com");
+		driver.findElement(By.name("username")).sendKeys("danielLlana_98@gmail.com");
 		driver.findElement(By.name("password")).click();
 		driver.findElement(By.name("password")).clear();
 		driver.findElement(By.name("password")).sendKeys("user123");
@@ -395,11 +402,11 @@ public class Sdi1107LabSpringApplicationTests {
 	}
 
 	@Test
-	public void testComprarSaldoPositivo() throws Exception {
+	public void prueba23() throws Exception {
 		 driver.get("http://localhost:8090/login?logout");
 		    driver.findElement(By.name("username")).click();
 		    driver.findElement(By.name("username")).clear();
-		    driver.findElement(By.name("username")).sendKeys("chunkyLover53@aol.com");
+		    driver.findElement(By.name("username")).sendKeys("danielLlana_98@gmail.com");
 		    driver.findElement(By.name("password")).click();
 		    driver.findElement(By.name("password")).clear();
 		    driver.findElement(By.name("password")).sendKeys("user123");
@@ -407,15 +414,16 @@ public class Sdi1107LabSpringApplicationTests {
 		    SeleniumUtils.esperarSegundos(driver, 2);
 		    driver.findElement(By.linkText("Ofertas")).click();
 		    driver.findElement(By.linkText("Ofertas disponibles")).click();
+		    SeleniumUtils.esperarSegundos(driver, 2);
 		    driver.findElement(By.id("buyButton")).click();
 	}
 
 	@Test
-	public void testComprarSaldoCero() throws Exception {
+	public void prueba24() throws Exception {
 		 driver.get("http://localhost:8090/login");
 		    driver.findElement(By.name("username")).click();
 		    driver.findElement(By.name("username")).clear();
-		    driver.findElement(By.name("username")).sendKeys("chunkyLover53@aol.com");
+		    driver.findElement(By.name("username")).sendKeys("danielLlana_98@gmail.com");
 		    driver.findElement(By.name("password")).click();
 		    driver.findElement(By.name("password")).clear();
 		    driver.findElement(By.name("password")).sendKeys("user123");
@@ -427,7 +435,21 @@ public class Sdi1107LabSpringApplicationTests {
 	}
 	
 	@Test
-	public void testMostrarOfertasCompradas() throws Exception {
+	public void prueba25() throws Exception {
+		 driver.get("http://localhost:8090/login?logout");
+		    driver.findElement(By.name("username")).click();
+		    driver.findElement(By.name("username")).clear();
+		    driver.findElement(By.name("username")).sendKeys("danielLlana_98@gmail.com");
+		    driver.findElement(By.name("password")).clear();
+		    driver.findElement(By.name("password")).sendKeys("user123");
+		    driver.findElement(By.name("password")).sendKeys(Keys.ENTER);
+		    driver.findElement(By.linkText("Ofertas")).click();
+		    driver.findElement(By.linkText("Ofertas disponibles")).click();
+		    driver.findElement(By.id("buyButton")).click();
+	}
+	
+	@Test
+	public void prueba26() throws Exception {
 	driver.get("http://localhost:8090/login?logout");
     driver.findElement(By.name("username")).click();
     driver.findElement(By.name("username")).clear();
@@ -442,7 +464,7 @@ public class Sdi1107LabSpringApplicationTests {
 	}
 	
 	@Test
-	public void testInternacionalizacionDeTodasLasVistas() throws Exception {
+	public void prueba27() throws Exception {
 		driver.get("http://localhost:8090/");
 		SeleniumUtils.esperarSegundos(driver, 2);
 	    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='English'])[1]/preceding::span[2]")).click();
@@ -478,5 +500,34 @@ public class Sdi1107LabSpringApplicationTests {
 	    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Mi dinero'])[1]/following::span[1]")).click();
 	    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Idioma'])[1]/following::span[2]")).click();
 	}
+	
+	
+	 @Test
+	  public void prueba28() throws Exception {
+	    driver.get("http://localhost:8090/");
+	    driver.findElement(By.id("myNavbar")).click();
+	    SeleniumUtils.textoNoPresentePagina(driver, "Gestión de usuarios");
+	  }
+	 
+	 @Test
+	  public void prueba29() throws Exception {
+	    driver.get("http://localhost:8090/");
+	    driver.findElement(By.id("myNavbar")).click();
+	    SeleniumUtils.textoNoPresentePagina(driver, "Mis ofertas");
+	  }
+	 
+	 @Test
+	  public void prueba30() throws Exception {
+	    driver.get("http://localhost:8090/login?logout");
+	    driver.findElement(By.name("username")).click();
+	    driver.findElement(By.name("username")).clear();
+	    driver.findElement(By.name("username")).sendKeys("danielLlana_98@gmail.com");
+	    driver.findElement(By.name("password")).clear();
+	    driver.findElement(By.name("password")).sendKeys("user123");
+	    driver.findElement(By.name("password")).sendKeys(Keys.ENTER);
+	    SeleniumUtils.textoNoPresentePagina(driver, "Gestión de usuarios");
+	  }
+	 
+	 
 
 }
